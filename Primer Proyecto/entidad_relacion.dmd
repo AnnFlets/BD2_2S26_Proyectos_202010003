@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="entidad_relacion" id="84C89C59-251C-095E-01FB-8015B4571C81" version="3.5">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:24:00 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>84C89C59-251C-095E-01FB-8015B4571C81</designId>
+</OSDM_Design>

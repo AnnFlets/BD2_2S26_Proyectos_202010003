@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="95815676-956C-2165-C006-B0EFB85BFF50" name="Aeronave">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:37:45 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="2AEA8BA1-EA92-6755-85C8-2BA8CF1C3FF2">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:37:54 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="modelo" id="2F52F7F9-2F5A-5391-F691-1E912C097FC5">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:38:00 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="aerolinea_operadora" id="91627AE7-DF0C-95DC-A360-4FD4701C59AD">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:38:04 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="matricula" id="2EA77E36-9172-01D8-82AA-9742059F118B">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:38:12 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="capacidad_max" id="B1F6DD82-2DE4-8A32-B3F8-A7CABB1EE857">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:38:20 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A64D369C-B8BA-E605-66FF-EDC2CD1FB48E" name="Aeronave PK">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:38:00 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>2AEA8BA1-EA92-6755-85C8-2BA8CF1C3FF2</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

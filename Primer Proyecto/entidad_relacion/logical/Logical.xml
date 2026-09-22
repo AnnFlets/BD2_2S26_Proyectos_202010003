@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="9B03F72A-3415-9443-0EB4-89C7041B5F79" mainViewID="AE2C1741-3940-CA7F-4FC1-F9E3E349596D">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:24:00 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

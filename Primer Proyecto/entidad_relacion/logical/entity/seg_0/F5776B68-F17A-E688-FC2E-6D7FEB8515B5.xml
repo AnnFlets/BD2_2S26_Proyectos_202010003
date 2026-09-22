@@ -1,0 +1,141 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F5776B68-F17A-E688-FC2E-6D7FEB8515B5" name="Reserva">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:39:19 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="B55F9ADE-3204-9C2E-858E-F69F47EA46E8">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:39:25 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_reserva" id="ACB1ACF3-179F-2B71-9D29-F21218294920">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:39:29 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="estado" id="6560938B-3DCA-C2A5-B60F-5D6CA45B9CFF">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:39:38 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_pasajero" id="241FF7E8-36EA-3F40-1242-97D7254B183E">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:43:46 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_vuelo" id="A2134370-1126-C1E8-4F56-E9F97C68BCDA">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:43:51 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_asiento" id="0C964823-F9C9-043F-F742-992701DBA593">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:43:54 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id1" id="06952A57-5804-680C-82A4-7922BC69F4CF">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:47:49 UTC</createdTime>
+<generatorID>8705588E-6E62-2697-4F69-8D43C66C4AB6</generatorID>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<referedAttribute>8BE51014-5A12-ED8F-0524-D3DDF64D6D90</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id2" id="921A84C6-360C-97F7-C62C-5E112A55A942">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:48:44 UTC</createdTime>
+<generatorID>9B00779D-E9F7-72A8-04B6-C816ADC7D18B</generatorID>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<referedAttribute>49A818B6-6E88-5807-D037-227343A2DBA2</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id3" id="5A7787DD-B40B-DC2B-BA58-9EDB7013B547">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:49:07 UTC</createdTime>
+<generatorID>92C38BF6-2C1A-B745-6722-2728D5924EAC</generatorID>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<referedAttribute>6B9384CE-B507-3DE7-6889-A0EB68846154</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id4" id="C2450DB1-1537-2B37-BDA9-EB3BAB58C6F8">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:49:31 UTC</createdTime>
+<generatorID>DBAAA9B2-63A9-993D-111B-A3C6A2E0068B</generatorID>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<referedAttribute>59DC5CE6-6962-9081-CE3A-FE4A5FCB9A7E</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E78ADF97-FD95-D4A8-AD3C-13359721E95F" name="Reserva PK">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:39:28 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B55F9ADE-3204-9C2E-858E-F69F47EA46E8</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
