@@ -1,0 +1,93 @@
+services:
+
+  # NODO PRINCIPAL (SEED NODE) - Cassandra 1
+  cassandra-node1:
+    image: cassandra:4.1
+    container_name: cassandra-node1
+    ports:
+      - "9042:9042"   # Puerto principal para CQL y conexión de scripts Python
+    environment:
+      - CASSANDRA_CLUSTER_NAME=ReservasAereasCluster
+      - CASSANDRA_DC=datacenter1
+      - CASSANDRA_RACK=rack1
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+      - CASSANDRA_SEEDS=cassandra-node1   # Se define a sí mismo como nodo semilla principal
+      - MAX_HEAP_SIZE=256M    # Memoria RAM máxima asignada
+      - HEAP_NEWSIZE=64M
+    healthcheck:
+      test: ["CMD", "cqlsh", "-e", "describe keyspaces"]
+      interval: 30s
+      timeout: 15s
+      retries: 10
+      start_period: 60s
+    volumes:
+      - cassandra-data1:/var/lib/cassandra
+    networks:
+      - cassandra-net
+
+  # NODO SECUNDARIO - Cassandra 2
+  cassandra-node2:
+    image: cassandra:4.1
+    container_name: cassandra-node2
+    ports:
+      - "9043:9042"   # Puerto expuesto en el host mapeado al 9042 interno
+    environment:
+      - CASSANDRA_CLUSTER_NAME=ReservasAereasCluster
+      - CASSANDRA_DC=datacenter1
+      - CASSANDRA_RACK=rack1
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+      - CASSANDRA_SEEDS=cassandra-node1
+      - MAX_HEAP_SIZE=256M    # Memoria RAM máxima asignada
+      - HEAP_NEWSIZE=64M
+    depends_on:
+      cassandra-node1:
+        condition: service_healthy   # Asegura que el nodo 1 esté completamente listo antes de iniciar
+    healthcheck:
+      test: ["CMD", "cqlsh", "-e", "describe keyspaces"]
+      interval: 30s
+      timeout: 15s
+      retries: 10
+      start_period: 60s
+    volumes:
+      - cassandra-data2:/var/lib/cassandra
+    networks:
+      - cassandra-net
+
+  # NODO SECUNDARIO - Cassandra 3
+  cassandra-node3:
+    image: cassandra:4.1
+    container_name: cassandra-node3
+    ports:
+      - "9044:9042"   # Puerto expuesto en el host mapeado al 9042 interno
+    environment:
+      - CASSANDRA_CLUSTER_NAME=ReservasAereasCluster
+      - CASSANDRA_DC=datacenter1
+      - CASSANDRA_RACK=rack1
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+      - CASSANDRA_SEEDS=cassandra-node1
+      - MAX_HEAP_SIZE=256M    # Memoria RAM máxima asignada
+      - HEAP_NEWSIZE=64M
+    depends_on:
+      cassandra-node2:
+        condition: service_healthy   # Asegura que el nodo 2 esté listo antes de arrancar
+    healthcheck:
+      test: ["CMD", "cqlsh", "-e", "describe keyspaces"]
+      interval: 30s
+      timeout: 15s
+      retries: 10
+      start_period: 60s
+    volumes:
+      - cassandra-data3:/var/lib/cassandra
+    networks:
+      - cassandra-net
+
+# VOLÚMENES PERSISTENTES
+volumes:
+  cassandra-data1:
+  cassandra-data2:
+  cassandra-data3:
+
+# RED PRIVADA VIRTUAL
+networks:
+  cassandra-net:
+    driver: bridge    # Permite la comunicación interna entre los nodos del clúster

@@ -97,7 +97,7 @@ Los atributos de estado solo podrán tomar los valores definidos por el negocio:
 
 ### Modelo Entidad-Relación
 
-![Modelo entidad-relación del sistema de gestión de reservas y boletos aéreos](./diagramas/modelo_entidad_relacion.png)
+![Modelo entidad-relación del sistema de gestión de reservas y boletos aéreos](./img/modelo_entidad_relacion.png)
 
 ### Descripción de las relaciones
 
@@ -166,7 +166,7 @@ WHERE id_vuelo = ?;
 * Los contadores deben actualizarse al realizar o cancelar una reserva, manteniendo sincronizada la disponibilidad y ocupación de los asientos de cada clase.
 * La tabla almacena directamente los conteos necesarios para responder a la consulta sin realizar el conteo de filas en tiempo de consulta.
 
-![Diseño tabla consulta 1](./diagramas/tabla_q1.png)
+![Diseño tabla consulta 1](./img/tabla_q1.png)
 
 
 ### Tabla 2: Historial cronológico de un pasajero
@@ -191,7 +191,7 @@ ORDER BY fecha_salida ASC;
 * **`id_reserva` = Clustering Key Column**: Permite diferenciar los registros que puedan tener la misma fecha_salida y para mantener la unicidad de las filas.
 * No se requiere bucketing en esta consulta, ya que cada partición corresponde a un pasajero específico y la cantidad de datos puede organizarse utilizando fecha_salida como Clustering Column. De esta forma, es posible consultar rangos de fechas y obtener el historial ordenado cronológicamente sin dividirlo en varias particiones.
 
-![Diseño tabla consulta 2](./diagramas/tabla_q2.png)
+![Diseño tabla consulta 2](./img/tabla_q2.png)
 
 
 ### Tabla 3: Manifiesto de pasajeros por vuelo
@@ -214,7 +214,17 @@ ORDER BY numero_asiento ASC;
 * No se requiere bucketing, ya que cada partición corresponde a un vuelo específico y contiene únicamente los registros asociados a los pasajeros y asientos de dicho vuelo.
 * La tabla contiene únicamente las reservas en estado confirmada o pendiente, ya que estos representan reservas con un asiento asignado.
 
-![Diseño tabla consulta 3](./diagramas/tabla_q3.png)
+![Diseño tabla consulta 3](./img/tabla_q3.png)
+
+
+
+
+
+
+
+
+
+
 
 
 ### Tabla 4: Porcentaje de ocupación por ruta y rango de fechas
@@ -243,7 +253,7 @@ AND fecha_salida <= ?;
 
 Debido a que Cassandra no permite mezclar columnas counter con columnas de tipos normales dentro de una misma tabla, las reservas_confirmadas se almacena en una tabla auxiliar independiente. De esta forma, ocupacion_por_ruta_mes puede mantener las columnas normales necesarias para consultar la ocupación, mientras que reservas_confirmadas_por_vuelo mantiene el contador actualizado.
 
-![Diseño tablas consulta 4](./diagramas/tabla_q4.png)
+![Diseño tablas consulta 4](./img/tabla_q4.png)
 
 
 ### Tabla 5: Top N de vuelos por ingresos generados
@@ -282,7 +292,7 @@ WHERE mes = ?
 * **`id_vuelo` = Partition Key**: Permite identificar de forma única el vuelo dentro de cada partición.
 * **`monto_total` = Counter**: Mantiene la suma acumulada de los pagos confirmados de cada vuelo. Cada vez que se confirma un pago, el contador puede incrementarse con el monto correspondiente.
 
-![Diseño tablas consulta 5](./diagramas/tabla_q5.png)
+![Diseño tablas consulta 5](./img/tabla_q5.png)
 
 
 ### Resumen del modelo lógico
@@ -298,6 +308,19 @@ WHERE mes = ?
 | ingresos_acumulados_por_vuelo | Q5 (auxiliar) | `mes` | `id_vuelo` | ((mes), id_vuelo) |
 
 Las tablas capacidad_por_vuelo e ingresos_acumulados_por_vuelo funcionan como tablas auxiliares. Se utilizan porque Cassandra tiene restricciones específicas para las tablas con counter y porque algunas consultas requieren mantener datos agregados y ordenados de una forma que facilite su ejecución.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -320,21 +343,20 @@ USE reservas_aereas;
 ```
 
 
-
-
-La elección de la estrategia de replicación y del Replication Factor forma parte de los requerimientos técnicos del proyecto. :contentReference[oaicite:5]{index=5}
-
----
-
-# 4.2 Crear las tablas
-
-Después viene:
-
-```markdown
 ### Creación de las tablas
 
 #### Tabla 1: Disponibilidad de asientos por vuelo
 
+```cql
+Query:
+SELECT * 
+FROM disponibilidad_asientos_por_vuelo 
+WHERE id_vuelo = ?;
+```
+
+Esta tabla permite consultar la cantidad de asientos disponibles y ocupados para cada clase de un vuelo.
+
+```cql
 CREATE TABLE IF NOT EXISTS disponibilidad_asientos_por_vuelo (
     id_vuelo UUID,
     clase TEXT,
@@ -342,14 +364,226 @@ CREATE TABLE IF NOT EXISTS disponibilidad_asientos_por_vuelo (
     ocupados COUNTER,
     PRIMARY KEY ((id_vuelo), clase)
 );
+```
 
 #### Tabla 2: Historial cronológico de un pasajero
 
+```cql
+Query:
+SELECT * 
+FROM historial_pasajero 
+WHERE id_pasajero = ?
+ORDER BY fecha_salida ASC;
+```
+
+Esta tabla permite consultar el historial de vuelos y reservas de un pasajero ordenado cronológicamente por la fecha de salida.
+
+```cql
+CREATE TABLE IF NOT EXISTS historial_pasajero (
+    id_pasajero UUID,
+    fecha_salida TIMESTAMP,
+    id_reserva UUID,
+
+    id_vuelo UUID,
+    codigo_vuelo TEXT,
+    aeropuerto_origen TEXT,
+    aeropuerto_destino TEXT,
+    fecha_llegada TIMESTAMP,
+    estado_vuelo TEXT,
+    fecha_reserva TIMESTAMP,
+    estado_reserva TEXT,
+    estado_pago TEXT,
+
+    PRIMARY KEY ((id_pasajero), fecha_salida, id_reserva)
+) WITH CLUSTERING ORDER BY (
+    fecha_salida ASC
+);
+```
+
 #### Tabla 3: Manifiesto de pasajeros por vuelo
+
+```cql
+Query:
+SELECT * 
+FROM manifiesto_vuelo
+WHERE id_vuelo = ?;
+```
+
+Esta tabla permite consultar todos los pasajeros asociados a un vuelo y conocer el asiento que ocupa cada uno.
+
+```cql
+CREATE TABLE IF NOT EXISTS manifiesto_vuelo (
+    id_vuelo UUID,
+    numero_asiento TEXT,
+
+    id_pasajero UUID,
+    nombre_pasajero TEXT,
+    clase TEXT,
+    estado_reserva TEXT,
+    estado_pago TEXT,
+
+    PRIMARY KEY ((id_vuelo), numero_asiento)
+) WITH CLUSTERING ORDER BY (
+    numero_asiento ASC
+);
+```
 
 #### Tabla 4: Ocupación por ruta y mes
 
 #### Tabla 5: Ingresos y Top N de vuelos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Configuración del clúster (Docker)
+
+Para ejecutar Cassandra en un entorno distribuido se hizo uso de un Docker Compose, donde se configuró un clúster compuesto por tres nodos Cassandra. Estos pertenecen al mismo datacenter (datacenter1) y utilizan una red interna de Docker que permite la comunicación entre ellos. El clúster se configuró con tres nodos debido a que el replication_factor definido para el keyspace es 3, por lo que, de esta manera, cada partición puede mantenerse replicada entre los tres nodos.
+
+### Puertos utilizados
+
+| Nodo | Puerto interno | Puerto del host |
+|:----:|:--------------:|:---------------:|
+| cassandra-node1 | 9042 | 9042 |
+| cassandra-node2 | 9042 | 9043 |
+| cassandra-node3 | 9042 | 9044 |
+
+### Verificación del clúster
+
+Una vez creado el archivo docker-compose.yml, se levantan los tres nodos mediante el comando:
+
+```bash
+docker compose up -d
+```
+
+Para comprobar que los contenedores están ejecutándose, se ejecuta el comando:
+
+```bash
+docker ps
+```
+
+Donde deben observarse los tres contenedores:
+
+```
+cassandra-node1
+cassandra-node2
+cassandra-node3
+```
+
+![Cluster de 3 nodos Cassandra](./img/cluster_cassandra.png)
+
+
+### Verificación del estado del clúster
+
+El estado del clúster puede comprobarse desde el primer nodo através del comando:
+
+```bash
+docker exec -it cassandra-node1 nodetool status
+```
+
+Se espera obtener una salida similar a:
+
+![Estado del cluster](./img/estado_cluster.png)
+
+Donde el estado `UN` significa:
+
+* **U - Up:** El nodo está disponible.
+* **N - Normal:** El nodo se encuentra funcionando normalmente dentro del clúster.
+
+Por lo tanto, se espera que los tres nodos aparezcan como `UN`.
+
+
+### Verificación del keyspace
+
+Después de comprobar que el clúster está funcionando, se puede verificar que el keyspace exista con:
+
+```bash
+docker exec -it cassandra-node1 cqlsh
+```
+
+Dentro de cqlsh ejecutar:
+
+```cql
+DESCRIBE KEYSPACES;
+```
+
+Debe aparecer: `reservas_aereas`
+
+También se puede seleccionar el keyspace:
+
+```cql
+USE reservas_aereas;
+```
+
+Y consultar las tablas con:
+
+```cql
+DESCRIBE TABLES;
+```
+
+![Verificar keyspace y tablas](./img/keyspace_tablas.png)
+
+
+### Verificación de la replicación
+
+Debido a que el keyspace fue configurado con `'replication_factor': 3`, las particiones de los datos deben mantenerse replicadas en tres nodos del clúster. La configuración puede verificarse mediante:
+
+```cql
+DESCRIBE KEYSPACE reservas_aereas;
+```
+
+Se debe observar una configuración similar a:
+
+```
+CREATE KEYSPACE reservas_aereas
+WITH replication = {
+    'class': 'SimpleStrategy',
+    'replication_factor': '3'
+}
+AND durable_writes = true;
+```
+
+![Verificar factor de replicación](./img/replication_factor.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
