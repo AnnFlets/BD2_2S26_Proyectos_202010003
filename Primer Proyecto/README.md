@@ -330,6 +330,7 @@ Las tablas capacidad_por_vuelo e ingresos_acumulados_por_vuelo funcionan como ta
 
 * Se utiliza **SimpleStrategy** debido a que el proyecto se implementará en un entorno local de desarrollo compuesto por un único datacenter. Esta estrategia permite distribuir las réplicas dentro del clúster sin requerir una configuración para múltiples datacenters.
 * Se establece un **replication_factor: 3**, lo que significa que cada dato tendrá tres réplicas distribuidas entre los nodos del clúster. Debido a que el clúster está compuesto por tres nodos, se busca mantener una copia replicada de los datos en cada nodo, aumentando la disponibilidad de la información ante la falla de uno de ellos.
+* Se utilizará el nivel de consistencia QUORUM, debido a que con un Replication Factor de 3 requiere respuestas de al menos 2 de las 3 réplicas. Esto proporciona un punto intermedio entre disponibilidad y consistencia, permitiendo continuar operando cuando un nodo falla, pero requiere la mayoría de las réplicas para completar la operación.
 
 ```cql
 CREATE KEYSPACE IF NOT EXISTS reservas_aereas
@@ -340,6 +341,8 @@ WITH replication = {
 AND durable_writes = true;
 
 USE reservas_aereas;
+
+CONSISTENCY QUORUM;
 ```
 
 
@@ -448,11 +451,11 @@ CREATE TABLE IF NOT EXISTS manifiesto_vuelo (
 
 
 
-## Configuración del clúster (Docker)
+### Configuración del clúster (Docker)
 
 Para ejecutar Cassandra en un entorno distribuido se hizo uso de un Docker Compose, donde se configuró un clúster compuesto por tres nodos Cassandra. Estos pertenecen al mismo datacenter (datacenter1) y utilizan una red interna de Docker que permite la comunicación entre ellos. El clúster se configuró con tres nodos debido a que el replication_factor definido para el keyspace es 3, por lo que, de esta manera, cada partición puede mantenerse replicada entre los tres nodos.
 
-### Puertos utilizados
+#### Puertos utilizados
 
 | Nodo | Puerto interno | Puerto del host |
 |:----:|:--------------:|:---------------:|
@@ -460,7 +463,7 @@ Para ejecutar Cassandra en un entorno distribuido se hizo uso de un Docker Compo
 | cassandra-node2 | 9042 | 9043 |
 | cassandra-node3 | 9042 | 9044 |
 
-### Verificación del clúster
+#### Verificación del clúster
 
 Una vez creado el archivo docker-compose.yml, se levantan los tres nodos mediante el comando:
 
@@ -485,7 +488,7 @@ cassandra-node3
 ![Cluster de 3 nodos Cassandra](./img/cluster_cassandra.png)
 
 
-### Verificación del estado del clúster
+#### Verificación del estado del clúster
 
 El estado del clúster puede comprobarse desde el primer nodo através del comando:
 
@@ -505,7 +508,7 @@ Donde el estado `UN` significa:
 Por lo tanto, se espera que los tres nodos aparezcan como `UN`.
 
 
-### Verificación del keyspace
+#### Verificación del keyspace
 
 Después de comprobar que el clúster está funcionando, se puede verificar que el keyspace exista con:
 
@@ -536,7 +539,7 @@ DESCRIBE TABLES;
 ![Verificar keyspace y tablas](./img/keyspace_tablas.png)
 
 
-### Verificación de la replicación
+#### Verificación de la replicación
 
 Debido a que el keyspace fue configurado con `'replication_factor': 3`, las particiones de los datos deben mantenerse replicadas en tres nodos del clúster. La configuración puede verificarse mediante:
 
@@ -546,7 +549,7 @@ DESCRIBE KEYSPACE reservas_aereas;
 
 Se debe observar una configuración similar a:
 
-```
+```cql
 CREATE KEYSPACE reservas_aereas
 WITH replication = {
     'class': 'SimpleStrategy',
@@ -559,41 +562,179 @@ AND durable_writes = true;
 
 
 
+## Pruebas y análisis
+
+### Consistency levels
+
+Para evaluar el comportamiento del clúster se utilizará un Replication Factor (RF) de 3, por lo que cada partición puede tener tres réplicas distribuidas entre los nodos del clúster. Se compararán los niveles de consistencia ONE, QUORUM y ALL.
+
+| Consistency level | Nodos que deben responder | Tolerancia con RF3 | Impacto esperado en latencia |
+|:-----------------:|:-------------------------:|:------------------:|:----------------------------:|
+| ONE | 1 de 3 | Puede continuar con hasta 2 nodos no disponibles | Bajo |
+| QUORUM | 2 de 3 | Puede continuar con 1 nodo no disponible | Medio |
+| ALL | 3 de 3 | No tolera ningún nodo no disponible | Alto |
+
+* `ONE` requiere la respuesta de una sola réplica, por lo que normalmente presenta menor latencia y mayor tolerancia a fallos.
+* `QUORUM` requiere la mayoría de las réplicas. Con un RF de 3, se necesitan respuestas de al menos 2 nodos. Esto proporciona un equilibrio entre disponibilidad y consistencia.
+* `ALL` requiere que las tres réplicas respondan. Por esta razón, cualquier nodo que no esté disponible puede provocar que la operación falle.
+
+### Pruebas con 3 nodos activos
+
+```bash
+# Verificar que el clúster esté funcionando y sus nodos estén activos
+docker ps
+docker exec -it cassandra-node1 nodetool status
+```
+
+![Preparación antes pruebas con 3 nodos funcionando](./img/nodos_funcionando_3.png)
+
+#### Consistency level ONE
+
+```cql
+CONSISTENCY ONE;
+
+SELECT *
+FROM disponibilidad_asientos_por_vuelo
+WHERE id_vuelo = 8c59ca3f-e0c3-4f8e-9776-7392a582a015;
+```
+
+![Prueba consistencia ONE con 3 nodos funcionales](./img/prueba_one_1.png)
+
+#### Consistency level QUORUM
+
+```cql
+CONSISTENCY QUORUM;
+
+SELECT *
+FROM disponibilidad_asientos_por_vuelo
+WHERE id_vuelo = 8c59ca3f-e0c3-4f8e-9776-7392a582a015;
+```
+
+![Prueba consistencia QUORUM con 3 nodos funcionales](./img/prueba_quorum_1.png)
+
+#### Consistency level ALL
+
+```cql
+CONSISTENCY ALL;
+
+SELECT *
+FROM disponibilidad_asientos_por_vuelo
+WHERE id_vuelo = 8c59ca3f-e0c3-4f8e-9776-7392a582a015;
+```
+
+![Prueba consistencia ALL con 3 nodos funcionales](./img/prueba_all_1.png)
 
 
+### Pruebas con 2 nodos activos (nodo1 y nodo2)
+
+```bash
+# Detener nodo (nodo3)
+docker stop cassandra-node3
+
+# Verificar que el clúster esté funcionando y sus nodos estén activos
+docker ps
+docker exec -it cassandra-node1 nodetool status
+```
+
+![Preparación antes pruebas con 2 nodos funcionando](./img/nodos_funcionando_2.png)
+
+#### Consistency level ONE
+
+```cql
+CONSISTENCY ONE;
+
+SELECT *
+FROM disponibilidad_asientos_por_vuelo
+WHERE id_vuelo = 8c59ca3f-e0c3-4f8e-9776-7392a582a015;
+```
+
+![Prueba consistencia ONE con 2 nodos funcionales](./img/prueba_one_2.png)
+
+#### Consistency level QUORUM
+
+```cql
+CONSISTENCY QUORUM;
+
+SELECT *
+FROM disponibilidad_asientos_por_vuelo
+WHERE id_vuelo = 8c59ca3f-e0c3-4f8e-9776-7392a582a015;
+```
+
+![Prueba consistencia QUORUM con 2 nodos funcionales](./img/prueba_quorum_2.png)
+
+#### Consistency level ALL
+
+```cql
+CONSISTENCY ALL;
+
+SELECT *
+FROM disponibilidad_asientos_por_vuelo
+WHERE id_vuelo = 8c59ca3f-e0c3-4f8e-9776-7392a582a015;
+```
+
+![Prueba consistencia ALL con 2 nodos funcionales](./img/prueba_all_2.png)
 
 
+### Pruebas con un nodo activo (nodo1)
+
+```bash
+# Detener nodo (nodo3)
+docker stop cassandra-node2
+
+# Verificar que el clúster esté funcionando y sus nodos estén activos
+docker ps
+docker exec -it cassandra-node1 nodetool status
+```
+
+![Preparación antes pruebas con un nodo funcionando](./img/nodos_funcionando_1.png)
+
+#### Consistency level ONE
+
+```cql
+CONSISTENCY ONE;
+
+SELECT *
+FROM disponibilidad_asientos_por_vuelo
+WHERE id_vuelo = 8c59ca3f-e0c3-4f8e-9776-7392a582a015;
+```
+
+![Prueba consistencia ONE con un nodo funcional](./img/prueba_one_3.png)
+
+#### Consistency level QUORUM
+
+```cql
+CONSISTENCY QUORUM;
+
+SELECT *
+FROM disponibilidad_asientos_por_vuelo
+WHERE id_vuelo = 8c59ca3f-e0c3-4f8e-9776-7392a582a015;
+```
+
+![Prueba consistencia QUORUM con un nodo funcional](./img/prueba_quorum_3.png)
+
+#### Consistency level ALL
+
+```cql
+CONSISTENCY ALL;
+
+SELECT *
+FROM disponibilidad_asientos_por_vuelo
+WHERE id_vuelo = 8c59ca3f-e0c3-4f8e-9776-7392a582a015;
+```
+
+![Prueba consistencia ALL con un nodo funcional](./img/prueba_all_3.png)
 
 
+### Resultados
 
+**¿Respondió la consulta?**
 
+| Nodos activos / Consistency level | ONE | QUORUM | ALL |
+|:---------------------------------:|:---:|:------:|:---:|
+| **3** | SÍ | SÍ | SÍ |
+| **2** | SÍ | SÍ | NO |
+| **1** | SÍ | NO | NO |
 
+De los resultados podemos concluir que con los tres nodos disponibles, los niveles ONE, QUORUM y ALL permiten ejecutar correctamente la consulta; al dejar dos nodos disponibles, ONE y QUORUM continúan funcionando, mientras que ALL falla porque requiere las tres réplicas; y finalmente, con un solo nodo disponible, únicamente ONE puede satisfacer la consulta, ya que QUORUM requiere dos réplicas y ALL las tres.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Esto demuestra que un nivel de consistencia más exigente requiere una mayor cantidad de réplicas disponibles, reduciendo la tolerancia ante fallos de nodos. Por el contrario, niveles como ONE permiten mantener la disponibilidad de las consultas incluso cuando existen fallos en el clúster.
