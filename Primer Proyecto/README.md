@@ -6,12 +6,6 @@
 | **Nombre:** | Ana Lucia Fletes Ordóñez |
 | **Carné:** | 202010003 |
 
-## Introducción
-
-
-## Índice
-
-
 
 
 ## Entidades
@@ -140,8 +134,8 @@ Los atributos de estado solo podrán tomar los valores definidos por el negocio:
 | Q1 | Obtener la cantidad de asientos disponibles y ocupados de un vuelo específico, desglosada por clase | `id_vuelo` | `clase` |
 | Q2 | Obtener los vuelos y reservas de un pasajero dentro de un rango de fechas, incluyendo el estado del pago | `id_pasajero`, `fecha_salida` | `fecha_salida ASC` |
 | Q3 | Obtener el listado de pasajeros de un vuelo específico, incluyendo la clase del asiento, el estado de la reserva y el estado del pago | `id_vuelo` | `numero_asiento ASC` |
-| Q4 | Obtener el porcentaje de ocupación de cada vuelo de una ruta específica dentro de un rango de fechas | `aeropuerto_origen`, `aeropuerto_destino`, `mes`, `fecha_salida` | `fecha_salida ASC` |
-| Q5 | Obtener los N vuelos con mayor ingreso dentro de un rango de fechas, ordenados de mayor a menor | `mes` | `monto_total DESC` |
+| Q4 | Obtener el porcentaje de ocupación de cada vuelo de una ruta específica dentro de un rango de fechas | `aeropuerto_origen`, `aeropuerto_destino`, `mes`, `fecha_salida` | `fecha_salida ASC`, `id_vuelo` |
+| Q5 | Obtener los N vuelos con mayor ingreso dentro de un rango de fechas, ordenados de mayor a menor | `mes` | `monto_total DESC, id_vuelo` |
 
 
 ### Tabla 1: Disponibilidad de asientos por clase para un vuelo específico
@@ -217,16 +211,6 @@ ORDER BY numero_asiento ASC;
 ![Diseño tabla consulta 3](./img/tabla_q3.png)
 
 
-
-
-
-
-
-
-
-
-
-
 ### Tabla 4: Porcentaje de ocupación por ruta y rango de fechas
 
 **Q4 - Obtener el porcentaje de ocupación de cada vuelo de una ruta específica dentro de un rango de fechas.**
@@ -249,9 +233,9 @@ AND fecha_salida <= ?;
 * **`mes` = Bucket**: Representa el período mensual utilizado para dividir los datos de una misma ruta en diferentes particiones, evitando que una partición crezca excesivamente.
 * **`fecha_salida` = Clustering Key Column [ASC]**: Permite ordenar cronológicamente los vuelos dentro de cada partición y realizar consultas por un rango de fechas utilizando los operadores >= y <=.
 * **`id_vuelo` = Clustering Key Column**: Permite diferenciar los vuelos que puedan tener la misma fecha_salida dentro de una misma partición.
-* **`reservas_confirmadas` = Counter**: Mantiene la cantidad de reservas confirmadas del vuelo, actualizándose cuando una reserva pasa a estar confirmada o deja de estarlo.
+* **`reservas_confirmadas` = Counter**: Usado en la tabla auxiliar. Mantiene mediante un COUNTER la cantidad de reservas confirmadas de cada vuelo. Este contador permite actualizar el número de reservas cuando una reserva es confirmada o deja de estarlo
 
-Debido a que Cassandra no permite mezclar columnas counter con columnas de tipos normales dentro de una misma tabla, las reservas_confirmadas se almacena en una tabla auxiliar independiente. De esta forma, ocupacion_por_ruta_mes puede mantener las columnas normales necesarias para consultar la ocupación, mientras que reservas_confirmadas_por_vuelo mantiene el contador actualizado.
+Debido a las restricciones de Cassandra para las tablas que utilizan COUNTER, el contador de reservas confirmadas se mantiene en una tabla independiente. El porcentaje de ocupación se actualiza en ocupacion_por_ruta_mes a partir de la información de reservas y capacidad, permitiendo que la consulta de negocio pueda obtener directamente el porcentaje requerido.
 
 ![Diseño tablas consulta 4](./img/tabla_q4.png)
 
@@ -272,25 +256,11 @@ LIMIT ?;
 **Decisión de diseño:**
 
 * **`mes` = Partition Key Column**: Agrupa los vuelos por mes, funcionando también como criterio de bucketing para distribuir los registros entre diferentes particiones.
-* **`monto_total` = Clustering Key Column [DESC]**: Permite mantener los vuelos ordenados de mayor a menor ingreso dentro de cada partición. Al estar ordenados de esta forma, los vuelos con mayores ingresos se encuentran al inicio de la partición y LIMIT N permite obtener directamente los primeros N vuelos.
+* **`monto_total` = Clustering Key Column [DESC]**: Permite ordenar los vuelos de mayor a menor según el ingreso generado. Al utilizar DESC, los vuelos con los ingresos más altos aparecen primero, por lo que LIMIT N permite obtener directamente los primeros N vuelos.
 * **`id_vuelo` = Clustering Key Column**: Permite diferenciar vuelos que tengan exactamente el mismo monto_total, evitando que dos vuelos con el mismo ingreso sean considerados como el mismo registro.
+* **`monto_total` = Counter**: Usado en la tabla auxiliar para realizar la acumulación de los ingresos.
 
-Para mantener actualizado el ingreso total de cada vuelo se utiliza una tabla auxiliar llamada ingresos_acumulados_por_vuelo. Esta tabla almacena la suma de los pagos confirmados de cada vuelo y utiliza monto_total como COUNTER, permitiendo incrementar el ingreso acumulado cada vez que se confirma un nuevo pago. De esta forma, la tabla mantiene el valor acumulado sin necesidad de recalcular la suma de todos los pagos cada vez que se realiza una consulta.
-
-La tabla top_ingresos_por_vuelo utiliza el valor acumulado de esta tabla para mantener los vuelos ordenados por monto_total de forma descendente. Se requieren ambas tablas porque una está diseñada para acumular los ingresos, mientras que la otra está diseñada para ordenarlos y obtener directamente el Top N.
-
-```cql
-QUERY:
-
-SELECT *
-FROM ingresos_acumulados_por_vuelo
-WHERE mes = ?
-```
-
-**Decisión de diseño:**
-
-* **`id_vuelo` = Partition Key**: Permite identificar de forma única el vuelo dentro de cada partición.
-* **`monto_total` = Counter**: Mantiene la suma acumulada de los pagos confirmados de cada vuelo. Cada vez que se confirma un pago, el contador puede incrementarse con el monto correspondiente.
+Debido a las restricciones de Cassandra para las tablas que utilizan COUNTER, el contador de ingresos se mantiene en una tabla independiente. Esta tabla permite acumular los ingresos confirmados de cada vuelo por mes. Posteriormente, la información se utiliza para mantener la tabla top_ingresos_por_vuelo, que está diseñada específicamente para realizar la consulta del Top N de manera eficiente.
 
 ![Diseño tablas consulta 5](./img/tabla_q5.png)
 
@@ -303,24 +273,11 @@ WHERE mes = ?
 | historial_pasajero | Q2 | `id_pasajero` | `fecha_salida ASC, id_reserva` | ((id_pasajero), fecha_salida, id_reserva) |
 | manifiesto_vuelo | Q3 | `id_vuelo` | `numero_asiento ASC` | ((id_vuelo), numero_asiento) |
 | ocupacion_por_ruta_mes | Q4 | `aeropuerto_origen, aeropuerto_destino, mes` | `fecha_salida ASC, id_vuelo` | ((aeropuerto_origen, aeropuerto_destino, mes), fecha_salida, id_vuelo) |
-| capacidad_por_vuelo | Q4 (auxiliar) | `id_vuelo` | — | ((id_vuelo)) |
+| reservas_confirmadas_por_vuelo | Q4 (auxiliar) | `id_vuelo` | — | ((id_vuelo)) |
 | top_ingresos_por_vuelo | Q5 | `mes` | `monto_total DESC, id_vuelo` | ((mes), monto_total, id_vuelo) |
-| ingresos_acumulados_por_vuelo | Q5 (auxiliar) | `mes` | `id_vuelo` | ((mes), id_vuelo) |
+| ingresos_acumulados_por_vuelo | Q5 (auxiliar) | `id_vuelo` | `mes` | ((id_vuelo), mes) |
 
-Las tablas capacidad_por_vuelo e ingresos_acumulados_por_vuelo funcionan como tablas auxiliares. Se utilizan porque Cassandra tiene restricciones específicas para las tablas con counter y porque algunas consultas requieren mantener datos agregados y ordenados de una forma que facilite su ejecución.
-
-
-
-
-
-
-
-
-
-
-
-
-
+Las tablas reservas_confirmadas_por_vuelo e ingresos_acumulados_por_vuelo funcionan como tablas auxiliares. Se utilizan principalmente para mantener los datos acumulados mediante columnas de tipo COUNTER, debido a las restricciones de Cassandra para este tipo de tablas. Posteriormente, la información acumulada se utiliza para mantener las tablas principales orientadas a las consultas de negocio.
 
 
 
@@ -433,27 +390,86 @@ CREATE TABLE IF NOT EXISTS manifiesto_vuelo (
 
 #### Tabla 4: Ocupación por ruta y mes
 
+```cql
+Query:
+SELECT *
+FROM ocupacion_por_ruta_mes
+WHERE aeropuerto_origen = ?
+  AND aeropuerto_destino = ?
+  AND mes = ?
+  AND fecha_salida >= ?
+  AND fecha_salida <= ?;
+```
+
+Esta tabla permite consultar el porcentaje de ocupación de los vuelos de una ruta específica dentro de un rango de fechas.
+
+```cql
+CREATE TABLE IF NOT EXISTS ocupacion_por_ruta_mes (
+    aeropuerto_origen TEXT,
+    aeropuerto_destino TEXT,
+    mes INT,
+    fecha_salida TIMESTAMP,
+    id_vuelo UUID,
+
+    codigo_vuelo TEXT,
+    capacidad_max INT,
+    porcentaje_ocupacion DECIMAL,
+
+    PRIMARY KEY ((aeropuerto_origen, aeropuerto_destino, mes), fecha_salida, id_vuelo)
+) WITH CLUSTERING ORDER BY (
+    fecha_salida ASC,
+    id_vuelo ASC
+);
+```
+
+Tabla auxiliar para las reservas confirmadas:
+
+```cql
+CREATE TABLE IF NOT EXISTS reservas_confirmadas_por_vuelo (
+    id_vuelo UUID,
+    reservas_confirmadas COUNTER,
+    PRIMARY KEY ((id_vuelo))
+);
+```
+
+Esta tabla auxiliar mantiene la cantidad de reservas confirmadas de cada vuelo mediante un contador. El valor puede utilizarse para actualizar el porcentaje de ocupación almacenado en ocupacion_por_ruta_mes.
+
+
 #### Tabla 5: Ingresos y Top N de vuelos
 
+Esta tabla permite consultar los vuelos que han generado los mayores ingresos dentro de un período mensual, ordenándolos de mayor a menor ingreso.
 
+```cql
+CREATE TABLE IF NOT EXISTS top_ingresos_por_vuelo (
+    mes INT,
+    monto_total DECIMAL,
+    id_vuelo UUID,
+    codigo_vuelo TEXT,
 
+    PRIMARY KEY ((mes), monto_total, id_vuelo)
+) WITH CLUSTERING ORDER BY (
+    monto_total DESC,
+    id_vuelo ASC
+);
+```
 
+Tabla auxiliar para el cálculo de los ingresos acumulados:
 
+```cql
+CREATE TABLE IF NOT EXISTS ingresos_acumulados_por_vuelo (
+    id_vuelo UUID,
+    mes INT,
+    monto_total COUNTER,
 
-
-
-
-
-
-
-
-
-
+    PRIMARY KEY ((id_vuelo), mes)
+);
+```
 
 
 ### Configuración del clúster (Docker)
 
 Para ejecutar Cassandra en un entorno distribuido se hizo uso de un Docker Compose, donde se configuró un clúster compuesto por tres nodos Cassandra. Estos pertenecen al mismo datacenter (datacenter1) y utilizan una red interna de Docker que permite la comunicación entre ellos. El clúster se configuró con tres nodos debido a que el replication_factor definido para el keyspace es 3, por lo que, de esta manera, cada partición puede mantenerse replicada entre los tres nodos.
+
 
 #### Puertos utilizados
 
@@ -462,6 +478,7 @@ Para ejecutar Cassandra en un entorno distribuido se hizo uso de un Docker Compo
 | cassandra-node1 | 9042 | 9042 |
 | cassandra-node2 | 9042 | 9043 |
 | cassandra-node3 | 9042 | 9044 |
+
 
 #### Verificación del clúster
 
@@ -559,6 +576,73 @@ AND durable_writes = true;
 ```
 
 ![Verificar factor de replicación](./img/replication_factor.png)
+
+
+
+## Carga masiva de datos
+
+Para realizar la carga masiva de información se desarrolló un script en Python llamado carga_datos.py. Este script utiliza el controlador de Cassandra para conectarse al clúster y genera automáticamente los datos necesarios para probar las consultas de negocio.
+
+### Instalación de dependencias
+
+Para ejecutar el script se creó un entorno virtual de Python. Los comandos utilizados son:
+
+```bash
+# Crear un entorno virtual
+py -m venv .venv
+
+# Activar el entorno virtual
+.\.venv\Scripts\Activate.ps1
+
+# Instalar las dependencias
+python -m pip install cassandra-driver Faker
+
+# Generar archivo de dependencias
+python -m pip freeze > requirements.txt
+```
+
+La librería cassandra-driver permite establecer la conexión entre Python y Cassandra, mientras que Faker se utiliza para generar datos ficticios de pasajeros.
+
+### Ejecución de la carga masiva
+
+Una vez creado y activado el entorno virtual y después de instalar las dependencias, el script se ejecuta mediante:
+
+```bash
+# Ejecutar carga masiva
+python .\python\carga_datos.py
+```
+
+El programa se conecta al nodo de Cassandra disponible en 127.0.0.1:9042 y utiliza el keyspace reservas_aereas. Durante la ejecución se generan y almacenan las 100,000 reservas, junto con la información relacionada necesaria para las tablas del modelo físico.
+
+### Inserción de datos mediante Batch Writes
+
+Para mejorar la eficiencia de la carga masiva, el script utiliza BatchStatement del controlador de Cassandra para agrupar múltiples operaciones de inserción. Un ejemplo simplificado de la utilización de un batch en Python es:
+
+from cassandra.query import BatchStatement
+
+batch = BatchStatement()
+
+batch.add_statement(
+    insert_reserva,
+    (
+        id_pasajero,
+        fecha_salida,
+        id_reserva,
+        id_vuelo,
+        codigo_vuelo,
+        aeropuerto_origen,
+        aeropuerto_destino,
+        fecha_llegada,
+        estado_vuelo,
+        fecha_reserva,
+        estado_reserva,
+        estado_pago
+    )
+)
+
+session.execute(batch)
+
+El uso de batches permite agrupar varias operaciones de escritura dentro de una misma ejecución. En el script, los datos se procesan por lotes para evitar realizar una operación individual para cada uno de los registros generados.
 
 
 

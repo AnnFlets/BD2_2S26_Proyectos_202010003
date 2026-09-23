@@ -4,16 +4,10 @@ from cassandra.query import BatchStatement, BatchType
 from faker import Faker
 from uuid import uuid4
 from datetime import datetime, timedelta
+from decimal import Decimal
 import random
 
-
-# ============================================================
 # CONFIGURACIÓN
-# NUM_RESERVAS = 100_000
-# NUM_PASAJEROS = 10_000
-# NUM_VUELOS = 2_000
-# ============================================================
-
 NUM_RESERVAS = 100_000
 NUM_PASAJEROS = 10_000
 NUM_VUELOS = 2_000
@@ -23,15 +17,13 @@ RESERVAS_POR_VUELO = NUM_RESERVAS // NUM_VUELOS
 
 SEED = 42
 
+
 fake = Faker("es_ES")
 random.seed(SEED)
 Faker.seed(SEED)
 
 
-# ============================================================
 # CONEXIÓN A CASSANDRA
-# ============================================================
-
 cluster = Cluster(
     ["127.0.0.1"],
     port=9042
@@ -47,6 +39,10 @@ try:
     # ========================================================
     # STATEMENTS PREPARADOS
     # ========================================================
+
+    # --------------------------------------------------------
+    # Q2 - Historial del pasajero
+    # --------------------------------------------------------
 
     insert_historial = session.prepare("""
         INSERT INTO historial_pasajero (
@@ -67,6 +63,10 @@ try:
     """)
 
 
+    # --------------------------------------------------------
+    # Q3 - Manifiesto del vuelo
+    # --------------------------------------------------------
+
     insert_manifiesto = session.prepare("""
         INSERT INTO manifiesto_vuelo (
             id_vuelo,
@@ -81,6 +81,10 @@ try:
     """)
 
 
+    # --------------------------------------------------------
+    # Q1 - Disponibilidad de asientos
+    # --------------------------------------------------------
+
     update_counter = session.prepare("""
         UPDATE disponibilidad_asientos_por_vuelo
         SET disponibles = disponibles + ?,
@@ -90,9 +94,71 @@ try:
     """)
 
 
+    # --------------------------------------------------------
+    # Q4 - Porcentaje de ocupación
+    # --------------------------------------------------------
+
+    insert_ocupacion = session.prepare("""
+        INSERT INTO ocupacion_por_ruta_mes (
+            aeropuerto_origen,
+            aeropuerto_destino,
+            mes,
+            fecha_salida,
+            id_vuelo,
+            codigo_vuelo,
+            capacidad_max,
+            porcentaje_ocupacion
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """)
+
+
+    # --------------------------------------------------------
+    # Q4 - Reservas confirmadas
+    # --------------------------------------------------------
+
+    update_reservas_confirmadas = session.prepare("""
+        UPDATE reservas_confirmadas_por_vuelo
+        SET reservas_confirmadas = reservas_confirmadas + ?
+        WHERE id_vuelo = ?
+    """)
+
+
+    # --------------------------------------------------------
+    # Q5 - Top de ingresos
+    # --------------------------------------------------------
+
+    insert_top_ingresos = session.prepare("""
+        INSERT INTO top_ingresos_por_vuelo (
+            mes,
+            monto_total,
+            id_vuelo,
+            codigo_vuelo
+        )
+        VALUES (?, ?, ?, ?)
+    """)
+
+
+    # --------------------------------------------------------
+    # Q5 - Ingresos acumulados
+    #
+    # Se almacena el ingreso en CENTAVOS porque Cassandra
+    # COUNTER trabaja con valores enteros.
+    # --------------------------------------------------------
+
+    update_ingresos_acumulados = session.prepare("""
+        UPDATE ingresos_acumulados_por_vuelo
+        SET monto_total = monto_total + ?
+        WHERE id_vuelo = ?
+          AND mes = ?
+    """)
+
+
     # ========================================================
     # PASAJEROS
     # ========================================================
+
+    print("Generando pasajeros...")
 
     pasajeros = [
         {
@@ -113,7 +179,7 @@ try:
         "JFK",
         "LAX",
         "MEX",
-        "MAD",
+        "MAD"
     ]
 
 
@@ -124,15 +190,17 @@ try:
     # 10 ejecutivos
     # 5 primera clase
     #
-    # Se utilizan números de fila con dos dígitos
-    # para que el orden ASC de Cassandra sea correcto.
+    # TOTAL = 60
     # ========================================================
 
     asientos = []
 
-    # 45 económicos:
-    # 01A - 08F, utilizando solamente los primeros 45
+    # --------------------------------------------------------
+    # 45 económicos
+    # --------------------------------------------------------
+
     for fila in range(1, 9):
+
         for letra in "ABCDEF":
 
             if len(
@@ -145,9 +213,12 @@ try:
                 })
 
 
-    # 10 ejecutivos:
-    # 09A - 10D
+    # --------------------------------------------------------
+    # 10 ejecutivos
+    # --------------------------------------------------------
+
     for fila in range(9, 11):
+
         for letra in "ABCDEF":
 
             if len(
@@ -160,8 +231,10 @@ try:
                 })
 
 
-    # 5 primera clase:
-    # 11A - 11E
+    # --------------------------------------------------------
+    # 5 primera clase
+    # --------------------------------------------------------
+
     for letra in "ABCDE":
 
         asientos.append({
@@ -179,9 +252,11 @@ try:
 
     vuelos = []
 
+    # Se utiliza un solo año para que el bucket "mes"
+    # no mezcle meses de años diferentes.
     fecha_base = datetime(
         2026,
-        9,
+        1,
         1,
         8,
         0,
@@ -213,24 +288,21 @@ try:
             "origen": origen,
             "destino": destino,
             "salida": fecha_salida,
-            "llegada": fecha_llegada,
+            "llegada": fecha_llegada
         })
 
 
     # ========================================================
-    # ESTRUCTURAS TEMPORALES PARA LA CARGA
+    # ESTRUCTURAS TEMPORALES
     # ========================================================
 
-    # Q2:
-    # todas las reservas agrupadas por pasajero
+    # Q2
     reservas_por_pasajero = defaultdict(list)
 
-    # Q3:
-    # reservas vigentes agrupadas por vuelo
+    # Q3
     manifiesto_por_vuelo = defaultdict(list)
 
-    # Q1:
-    # conteo de ocupados por vuelo y clase
+    # Q1
     ocupados_por_vuelo = defaultdict(
         lambda: {
             "economica": 0,
@@ -239,6 +311,29 @@ try:
         }
     )
 
+    # Q4
+    reservas_confirmadas_por_vuelo = defaultdict(int)
+
+    # Q5
+    ingresos_por_vuelo = defaultdict(int)
+
+
+    # ========================================================
+    # PRECIOS POR CLASE
+    #
+    # Los valores están expresados en centavos.
+    #
+    # Económica  = $150.00
+    # Ejecutiva  = $350.00
+    # Primera    = $700.00
+    # ========================================================
+
+    precios_centavos = {
+        "economica": 15000,
+        "ejecutiva": 35000,
+        "primera": 70000
+    }
+
 
     # ========================================================
     # GENERACIÓN DE RESERVAS
@@ -246,15 +341,19 @@ try:
 
     total = 0
 
-    for vuelo in vuelos:
+    print()
+    print("Generando reservas...")
 
-        # Cada vuelo tendrá 50 pasajeros diferentes.
+
+    for indice_vuelo, vuelo in enumerate(vuelos):
+
+        # Cada vuelo tendrá 50 pasajeros diferentes
         pasajeros_del_vuelo = random.sample(
             pasajeros,
             RESERVAS_POR_VUELO
         )
 
-        # Cada reserva recibe un asiento diferente.
+        # Cada reserva recibe un asiento diferente
         asientos_del_vuelo = random.sample(
             asientos,
             RESERVAS_POR_VUELO
@@ -312,10 +411,10 @@ try:
 
 
             # ------------------------------------------------
-            # Q2: historial del pasajero
+            # Q2
+            # Historial del pasajero
             #
-            # Se guardan TODAS las reservas,
-            # incluidas las canceladas.
+            # Se guardan todas las reservas.
             # ------------------------------------------------
 
             reservas_por_pasajero[
@@ -339,10 +438,10 @@ try:
 
 
             # ------------------------------------------------
-            # Q3: manifiesto
+            # Q3
+            # Manifiesto
             #
-            # Solo CONFIRMADA y PENDIENTE.
-            # CANCELADA no aparece.
+            # Solo confirmadas y pendientes.
             # ------------------------------------------------
 
             if estado_reserva in (
@@ -365,8 +464,9 @@ try:
                 )
 
 
-                # Q1:
-                # CONFIRMADA y PENDIENTE ocupan un asiento.
+                # Q1
+                # Confirmadas y pendientes ocupan asiento.
+
                 ocupados_por_vuelo[
                     vuelo["id"]
                 ][
@@ -374,11 +474,36 @@ try:
                 ] += 1
 
 
+            # ------------------------------------------------
+            # Q4
+            # Reservas confirmadas
+            # ------------------------------------------------
+
+            if estado_reserva == "confirmada":
+
+                reservas_confirmadas_por_vuelo[
+                    vuelo["id"]
+                ] += 1
+
+
+                # ------------------------------------------------
+                # Q5
+                # Ingreso de pagos confirmados
+                # ------------------------------------------------
+
+                ingresos_por_vuelo[
+                    vuelo["id"]
+                ] += precios_centavos[
+                    asiento["clase"]
+                ]
+
+
             total += 1
 
 
         # Mostrar avance cada 100 vuelos
-        if (vuelos.index(vuelo) + 1) % 100 == 0:
+
+        if (indice_vuelo + 1) % 100 == 0:
 
             print(
                 f"Generadas {total:,} reservas..."
@@ -394,9 +519,6 @@ try:
 
     # ========================================================
     # CARGA Q2
-    #
-    # Un batch por pasajero.
-    # Todos los INSERT pertenecen a la misma partición.
     # ========================================================
 
     print()
@@ -405,11 +527,13 @@ try:
 
     pasajeros_procesados = 0
 
+
     for id_pasajero, reservas in reservas_por_pasajero.items():
 
         batch = BatchStatement(
             batch_type=BatchType.UNLOGGED
         )
+
 
         for reserva in reservas:
 
@@ -418,9 +542,11 @@ try:
                 reserva
             )
 
+
         session.execute(batch)
 
         pasajeros_procesados += 1
+
 
         if pasajeros_procesados % 1000 == 0:
 
@@ -432,9 +558,6 @@ try:
 
     # ========================================================
     # CARGA Q3
-    #
-    # Un batch por vuelo.
-    # Todos los INSERT pertenecen a la misma partición.
     # ========================================================
 
     print()
@@ -443,11 +566,13 @@ try:
 
     vuelos_procesados = 0
 
+
     for id_vuelo, registros in manifiesto_por_vuelo.items():
 
         batch = BatchStatement(
             batch_type=BatchType.UNLOGGED
         )
+
 
         for registro in registros:
 
@@ -456,9 +581,11 @@ try:
                 registro
             )
 
+
         session.execute(batch)
 
         vuelos_procesados += 1
+
 
         if vuelos_procesados % 100 == 0:
 
@@ -470,9 +597,6 @@ try:
 
     # ========================================================
     # CARGA Q1
-    #
-    # Los tres counters de cada vuelo pertenecen
-    # a la misma partición.
     # ========================================================
 
     print()
@@ -482,6 +606,7 @@ try:
     for vuelo in vuelos:
 
         id_vuelo = vuelo["id"]
+
 
         batch = BatchStatement(
             batch_type=BatchType.UNLOGGED
@@ -519,6 +644,145 @@ try:
 
 
     # ========================================================
+    # CARGA Q4
+    # ========================================================
+
+    print()
+    print("Cargando datos de ocupación Q4...")
+
+
+    for indice_vuelo, vuelo in enumerate(vuelos):
+
+        id_vuelo = vuelo["id"]
+
+        mes = vuelo["salida"].month
+
+        capacidad_max = len(asientos)
+
+        ocupados = sum(
+            ocupados_por_vuelo[id_vuelo].values()
+        )
+
+        porcentaje_ocupacion = (
+            Decimal(ocupados) /
+            Decimal(capacidad_max)
+        ) * Decimal("100")
+
+
+        # ----------------------------------------------------
+        # Tabla principal Q4
+        # ----------------------------------------------------
+
+        session.execute(
+            insert_ocupacion,
+            (
+                vuelo["origen"],
+                vuelo["destino"],
+                mes,
+                vuelo["salida"],
+                id_vuelo,
+                vuelo["codigo"],
+                capacidad_max,
+                porcentaje_ocupacion
+            )
+        )
+
+
+        # ----------------------------------------------------
+        # Tabla auxiliar Q4
+        # ----------------------------------------------------
+
+        reservas_confirmadas = (
+            reservas_confirmadas_por_vuelo[
+                id_vuelo
+            ]
+        )
+
+
+        session.execute(
+            update_reservas_confirmadas,
+            (
+                reservas_confirmadas,
+                id_vuelo
+            )
+        )
+
+
+        if (indice_vuelo + 1) % 100 == 0:
+
+            print(
+                f"Vuelos Q4 procesados: "
+                f"{indice_vuelo + 1:,}"
+            )
+
+
+    # ========================================================
+    # CARGA Q5
+    # ========================================================
+
+    print()
+    print("Cargando datos de ingresos Q5...")
+
+
+    for indice_vuelo, vuelo in enumerate(vuelos):
+
+        id_vuelo = vuelo["id"]
+
+        mes = vuelo["salida"].month
+
+        ingreso_centavos = ingresos_por_vuelo[
+            id_vuelo
+        ]
+
+
+        # ----------------------------------------------------
+        # Tabla auxiliar Q5
+        #
+        # Guarda el ingreso como COUNTER en centavos.
+        # ----------------------------------------------------
+
+        session.execute(
+            update_ingresos_acumulados,
+            (
+                ingreso_centavos,
+                id_vuelo,
+                mes
+            )
+        )
+
+
+        # ----------------------------------------------------
+        # Tabla principal Q5
+        #
+        # Convertimos centavos a dólares.
+        # ----------------------------------------------------
+
+        monto_total = (
+            Decimal(ingreso_centavos)
+            / Decimal("100")
+        )
+
+
+        session.execute(
+            insert_top_ingresos,
+            (
+                mes,
+                monto_total,
+                id_vuelo,
+                vuelo["codigo"]
+            )
+        )
+
+
+        if (indice_vuelo + 1) % 100 == 0:
+
+            print(
+                f"Vuelos Q5 procesados: "
+                f"{indice_vuelo + 1:,}"
+            )
+
+
+    # ========================================================
     # FINAL
     # ========================================================
 
@@ -529,6 +793,11 @@ try:
     print(f"Reservas procesadas : {total:,}")
     print(f"Pasajeros generados  : {NUM_PASAJEROS:,}")
     print(f"Vuelos generados     : {NUM_VUELOS:,}")
+    print("Q1 - Disponibilidad  : OK")
+    print("Q2 - Historial       : OK")
+    print("Q3 - Manifiestos     : OK")
+    print("Q4 - Ocupación       : OK")
+    print("Q5 - Ingresos        : OK")
     print("======================================")
 
 
