@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F5776B68-F17A-E688-FC2E-6D7FEB8515B5" name="Reserva">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="24B3DC6D-A7E5-700D-917C-44267ACB6587" name="Vuelo">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:39:19 UTC</createdTime>
+<createdTime>2026-09-22 15:40:20 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id" id="B55F9ADE-3204-9C2E-858E-F69F47EA46E8">
+<Attribute name="id" id="49A818B6-6E88-5807-D037-227343A2DBA2">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:39:25 UTC</createdTime>
+<createdTime>2026-09-22 15:40:25 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -25,9 +25,9 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="fecha_reserva" id="ACB1ACF3-179F-2B71-9D29-F21218294920">
+<Attribute name="codigo" id="8C8CDD39-FACB-7255-FCB0-98DBA1E8F8B6">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:39:29 UTC</createdTime>
+<createdTime>2026-09-22 15:40:28 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -35,9 +35,9 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="estado" id="6560938B-3DCA-C2A5-B60F-5D6CA45B9CFF">
+<Attribute name="aeropuerto_origen" id="0E195565-E0BC-19B9-BA20-A04837FC0A5E">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:39:38 UTC</createdTime>
+<createdTime>2026-09-22 15:40:35 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -45,9 +45,9 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_pasajero" id="241FF7E8-36EA-3F40-1242-97D7254B183E">
+<Attribute name="aeropuerto_destino" id="C71C3245-C9BA-2235-F379-CFC3C2877F37">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:43:46 UTC</createdTime>
+<createdTime>2026-09-22 15:40:43 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -55,9 +55,9 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_vuelo" id="A2134370-1126-C1E8-4F56-E9F97C68BCDA">
+<Attribute name="fecha_salida" id="2DC37671-C57F-AAE2-2645-CAB18AB80903">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:43:51 UTC</createdTime>
+<createdTime>2026-09-22 15:40:49 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -65,9 +65,9 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_asiento" id="0C964823-F9C9-043F-F742-992701DBA593">
+<Attribute name="fecha_llegada" id="AD8EC597-900A-A147-5B21-2DD059589543">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:43:54 UTC</createdTime>
+<createdTime>2026-09-22 15:40:59 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -75,66 +75,40 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id1" id="06952A57-5804-680C-82A4-7922BC69F4CF">
+<Attribute name="estado" id="B1532E0D-E261-1409-AD10-DD6604C5DD87">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:47:49 UTC</createdTime>
-<generatorID>8705588E-6E62-2697-4F69-8D43C66C4AB6</generatorID>
+<createdTime>2026-09-22 15:41:04 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
 </engineerTo>
-<referedAttribute>8BE51014-5A12-ED8F-0524-D3DDF64D6D90</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id2" id="921A84C6-360C-97F7-C62C-5E112A55A942">
+<Attribute name="id1" id="2279FE4C-99F6-AE72-3602-49D736610C97">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:48:44 UTC</createdTime>
-<generatorID>9B00779D-E9F7-72A8-04B6-C816ADC7D18B</generatorID>
+<createdTime>2026-09-22 15:45:34 UTC</createdTime>
+<generatorID>35DFEB3B-7DED-AFD4-9049-4D53C3469446</generatorID>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
 </engineerTo>
-<referedAttribute>49A818B6-6E88-5807-D037-227343A2DBA2</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id3" id="5A7787DD-B40B-DC2B-BA58-9EDB7013B547">
-<createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:49:07 UTC</createdTime>
-<generatorID>92C38BF6-2C1A-B745-6722-2728D5924EAC</generatorID>
-<ownerDesignName>entidad_relacion</ownerDesignName>
-<engineerTo>
-<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
-</engineerTo>
-<referedAttribute>6B9384CE-B507-3DE7-6889-A0EB68846154</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id4" id="C2450DB1-1537-2B37-BDA9-EB3BAB58C6F8">
-<createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:49:31 UTC</createdTime>
-<generatorID>DBAAA9B2-63A9-993D-111B-A3C6A2E0068B</generatorID>
-<ownerDesignName>entidad_relacion</ownerDesignName>
-<engineerTo>
-<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
-</engineerTo>
-<referedAttribute>59DC5CE6-6962-9081-CE3A-FE4A5FCB9A7E</referedAttribute>
+<referedAttribute>2AEA8BA1-EA92-6755-85C8-2BA8CF1C3FF2</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="E78ADF97-FD95-D4A8-AD3C-13359721E95F" name="Reserva PK">
+<identifier id="5E750107-4580-66F2-F1C7-5EC4743348C3" name="Vuelo PK">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:39:28 UTC</createdTime>
+<createdTime>2026-09-22 15:40:27 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>B55F9ADE-3204-9C2E-858E-F69F47EA46E8</attributeRef>
+<attributeRef>49A818B6-6E88-5807-D037-227343A2DBA2</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

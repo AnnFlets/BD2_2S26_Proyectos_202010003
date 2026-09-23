@@ -8,6 +8,8 @@
 </engineerTo>
 <sourcePk>841DB599-24D6-8577-97D1-A56AF9FBCDD7</sourcePk>
 <identifying>false</identifying>
+<nameOnSource>asignado en</nameOnSource>
+<nameOnTarget>contiene</nameOnTarget>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>

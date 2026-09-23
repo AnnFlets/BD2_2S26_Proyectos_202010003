@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="95815676-956C-2165-C006-B0EFB85BFF50" name="Aeronave">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CA8B0C05-B0F3-7AA9-36A1-09455741D9AB" name="Asiento">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:37:45 UTC</createdTime>
+<createdTime>2026-09-22 15:39:43 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id" id="2AEA8BA1-EA92-6755-85C8-2BA8CF1C3FF2">
+<Attribute name="id" id="6B9384CE-B507-3DE7-6889-A0EB68846154">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:37:54 UTC</createdTime>
+<createdTime>2026-09-22 15:39:59 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -25,9 +25,9 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="modelo" id="2F52F7F9-2F5A-5391-F691-1E912C097FC5">
+<Attribute name="numero" id="026CF269-6DA8-8C12-8BA0-B6965FAD47CB">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:38:00 UTC</createdTime>
+<createdTime>2026-09-22 15:40:03 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -35,9 +35,9 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="aerolinea_operadora" id="91627AE7-DF0C-95DC-A360-4FD4701C59AD">
+<Attribute name="clase" id="0EF2D154-CC64-24A7-996B-27E1BCCC7457">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:38:04 UTC</createdTime>
+<createdTime>2026-09-22 15:40:11 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -45,9 +45,9 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="matricula" id="2EA77E36-9172-01D8-82AA-9742059F118B">
+<Attribute name="estado" id="3977FB4F-519D-58EC-8F61-79594F0C1C4F">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:38:12 UTC</createdTime>
+<createdTime>2026-09-22 15:40:13 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -55,28 +55,30 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="capacidad_max" id="B1F6DD82-2DE4-8A32-B3F8-A7CABB1EE857">
+<Attribute name="id1" id="5E49D7CD-9A6E-701F-B8D0-A4956456FED9">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:38:20 UTC</createdTime>
+<createdTime>2026-09-22 15:46:52 UTC</createdTime>
+<generatorID>962BAC1C-0FED-EF20-6947-E3BF5B3475B7</generatorID>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
 </engineerTo>
+<referedAttribute>49A818B6-6E88-5807-D037-227343A2DBA2</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="A64D369C-B8BA-E605-66FF-EDC2CD1FB48E" name="Aeronave PK">
+<identifier id="841DB599-24D6-8577-97D1-A56AF9FBCDD7" name="Asiento PK">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:38:00 UTC</createdTime>
+<createdTime>2026-09-22 15:40:02 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>2AEA8BA1-EA92-6755-85C8-2BA8CF1C3FF2</attributeRef>
+<attributeRef>6B9384CE-B507-3DE7-6889-A0EB68846154</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

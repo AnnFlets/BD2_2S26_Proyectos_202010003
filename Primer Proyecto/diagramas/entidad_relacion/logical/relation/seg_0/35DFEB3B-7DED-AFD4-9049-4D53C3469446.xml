@@ -8,6 +8,8 @@
 </engineerTo>
 <sourcePk>A64D369C-B8BA-E605-66FF-EDC2CD1FB48E</sourcePk>
 <identifying>false</identifying>
+<nameOnSource>está asignada a</nameOnSource>
+<nameOnTarget>tiene asignada</nameOnTarget>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>

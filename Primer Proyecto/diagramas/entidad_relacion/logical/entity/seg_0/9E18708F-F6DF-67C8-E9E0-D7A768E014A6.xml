@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="24B3DC6D-A7E5-700D-917C-44267ACB6587" name="Vuelo">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9E18708F-F6DF-67C8-E9E0-D7A768E014A6" name="Pasajero">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:40:20 UTC</createdTime>
+<createdTime>2026-09-22 15:35:39 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id" id="49A818B6-6E88-5807-D037-227343A2DBA2">
+<Attribute name="id" id="8BE51014-5A12-ED8F-0524-D3DDF64D6D90">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:40:25 UTC</createdTime>
+<createdTime>2026-09-22 15:35:46 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -25,9 +25,9 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="codigo" id="8C8CDD39-FACB-7255-FCB0-98DBA1E8F8B6">
+<Attribute name="nombre" id="D8E2BCD9-0914-3BFF-E436-AFEEF7DDE38F">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:40:28 UTC</createdTime>
+<createdTime>2026-09-22 15:35:57 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -35,9 +35,9 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="aeropuerto_origen" id="0E195565-E0BC-19B9-BA20-A04837FC0A5E">
+<Attribute name="email" id="CCB3A388-DE0F-54FD-2760-35EF3FA66C2A">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:40:35 UTC</createdTime>
+<createdTime>2026-09-22 15:36:04 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -45,9 +45,31 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="aeropuerto_destino" id="C71C3245-C9BA-2235-F379-CFC3C2877F37">
+<Attribute name="pasaporte" id="57EFD0A7-2C23-9317-B902-CDB21B12BB9E">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:40:43 UTC</createdTime>
+<createdTime>2026-09-22 15:36:11 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="dpi" id="8A925158-3BA5-C28F-C4F1-152C096180BB">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:37:10 UTC</createdTime>
+<ownerDesignName>entidad_relacion</ownerDesignName>
+<engineerTo>
+<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="telefono" id="0A422D93-6E66-331F-3D7B-D781463CB046">
+<createdBy>analu</createdBy>
+<createdTime>2026-09-22 15:37:20 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
@@ -55,60 +77,28 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="fecha_salida" id="2DC37671-C57F-AAE2-2645-CAB18AB80903">
+<Attribute name="nacionalidad" id="781E1363-3C3F-321A-F941-5A6DFE90737B">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:40:49 UTC</createdTime>
+<createdTime>2026-09-22 15:37:28 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="fecha_llegada" id="AD8EC597-900A-A147-5B21-2DD059589543">
-<createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:40:59 UTC</createdTime>
-<ownerDesignName>entidad_relacion</ownerDesignName>
-<engineerTo>
-<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
-</engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="estado" id="B1532E0D-E261-1409-AD10-DD6604C5DD87">
-<createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:41:04 UTC</createdTime>
-<ownerDesignName>entidad_relacion</ownerDesignName>
-<engineerTo>
-<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
-</engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id1" id="2279FE4C-99F6-AE72-3602-49D736610C97">
-<createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:45:34 UTC</createdTime>
-<generatorID>35DFEB3B-7DED-AFD4-9049-4D53C3469446</generatorID>
-<ownerDesignName>entidad_relacion</ownerDesignName>
-<engineerTo>
-<item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
-</engineerTo>
-<referedAttribute>2AEA8BA1-EA92-6755-85C8-2BA8CF1C3FF2</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="5E750107-4580-66F2-F1C7-5EC4743348C3" name="Vuelo PK">
+<identifier id="D8889E54-11BD-B754-633B-4CCF1CF71E28" name="Pasajero PK">
 <createdBy>analu</createdBy>
-<createdTime>2026-09-22 15:40:27 UTC</createdTime>
+<createdTime>2026-09-22 15:35:55 UTC</createdTime>
 <ownerDesignName>entidad_relacion</ownerDesignName>
 <engineerTo>
 <item key="61BF97B7-192C-435A-745F-C4D8CE41710F" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>49A818B6-6E88-5807-D037-227343A2DBA2</attributeRef>
+<attributeRef>8BE51014-5A12-ED8F-0524-D3DDF64D6D90</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

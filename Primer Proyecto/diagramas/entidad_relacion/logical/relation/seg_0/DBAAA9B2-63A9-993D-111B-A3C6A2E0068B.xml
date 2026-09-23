@@ -9,6 +9,8 @@
 <sourcePk>E78ADF97-FD95-D4A8-AD3C-13359721E95F</sourcePk>
 <targetPk>81599313-D29E-8EB7-19E4-B76FE192B73A</targetPk>
 <identifying>false</identifying>
+<nameOnSource>tiene asociado</nameOnSource>
+<nameOnTarget>pertenece a</nameOnTarget>
 <optionalSource>false</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
