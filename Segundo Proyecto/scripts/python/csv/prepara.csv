@@ -1,0 +1,444 @@
+﻿chef_id,platillo_id,estilo,especialidad
+078dc5d0-297a-59b1-a82f-6eb442965211,473d58a4-5498-5318-91b0-37eb64028928,Casero,Pescados y mariscos
+078dc5d0-297a-59b1-a82f-6eb442965211,836e3778-bf27-525c-b35b-1df858de24d2,Gourmet,Carnes
+078dc5d0-297a-59b1-a82f-6eb442965211,7160655f-a02f-58d8-b051-34a544eda561,Contemporáneo,Pastas
+078dc5d0-297a-59b1-a82f-6eb442965211,405a35c5-7944-5b52-9669-e6fb9835c456,Tradicional,Pescados y mariscos
+44cde1a2-6424-5be9-86e6-16978131103f,73939612-bd12-50c0-a78d-546c007647d5,Tradicional,Vegetales
+44cde1a2-6424-5be9-86e6-16978131103f,405a35c5-7944-5b52-9669-e6fb9835c456,Casero,Pastas
+44cde1a2-6424-5be9-86e6-16978131103f,67ebaf0e-8c97-5145-9ce2-eb22e30ad54a,Gourmet,Postres
+44cde1a2-6424-5be9-86e6-16978131103f,b9479138-219c-5230-ab15-5edec9064126,Gourmet,Postres
+a13e89b6-6cbf-5a8f-9277-c3f015e11a4e,378d7039-5e24-5d60-8f8c-381efcd5a133,Fusión,Postres
+a13e89b6-6cbf-5a8f-9277-c3f015e11a4e,116d052c-556b-5b2c-ab53-831e028b6e94,Fusión,Pastas
+a13e89b6-6cbf-5a8f-9277-c3f015e11a4e,a3e04d81-875a-575a-89fa-3635f747e854,Fusión,Cocina regional
+a13e89b6-6cbf-5a8f-9277-c3f015e11a4e,a280f796-71f5-5fbe-8590-69abf2c44b5a,Contemporáneo,Carnes
+12518e78-c2d7-543d-a6d4-371dd002a040,849c1044-c918-542b-a8e5-1c6b17e453ce,Tradicional,Pescados y mariscos
+12518e78-c2d7-543d-a6d4-371dd002a040,d5e11d14-2fd5-5535-a693-45bae50ff7ea,Fusión,Pastas
+12518e78-c2d7-543d-a6d4-371dd002a040,9d235a29-90cd-57ca-b2f6-12f248ebe914,Gourmet,Cocina regional
+12518e78-c2d7-543d-a6d4-371dd002a040,7d6ab656-f013-5795-8abf-ad44da728586,Casero,Postres
+12518e78-c2d7-543d-a6d4-371dd002a040,143e8805-e233-51d8-83a8-f4da874bc4eb,Fusión,Carnes
+12518e78-c2d7-543d-a6d4-371dd002a040,9fdc8338-e39e-54ab-be51-9bad9b2bcc6f,Fusión,Carnes
+5b021452-1daa-5cfc-8018-dca1dfd92bb1,be0e0463-3608-565f-b32d-5389e5c60af9,Tradicional,Pescados y mariscos
+5b021452-1daa-5cfc-8018-dca1dfd92bb1,8c06ffa2-571f-5038-81d8-acb47265310c,Fusión,Vegetales
+5b021452-1daa-5cfc-8018-dca1dfd92bb1,e95c884d-40d7-57c0-a10f-f3a21f55e9ae,Casero,Pastas
+3538ef62-e625-5e35-a7f7-b92a5cc4b69d,836e3778-bf27-525c-b35b-1df858de24d2,Casero,Pastas
+3538ef62-e625-5e35-a7f7-b92a5cc4b69d,e3c0aad6-0e4c-535c-85cd-9660b855be3d,Casero,Cocina regional
+1b4095fb-347e-52b1-87f6-e314298945ba,d8e30b36-bf87-5d88-a411-da8a1f841b29,Fusión,Pastas
+1b4095fb-347e-52b1-87f6-e314298945ba,7160655f-a02f-58d8-b051-34a544eda561,Casero,Postres
+1b4095fb-347e-52b1-87f6-e314298945ba,a280f796-71f5-5fbe-8590-69abf2c44b5a,Tradicional,Pescados y mariscos
+1b4095fb-347e-52b1-87f6-e314298945ba,df0ce0ab-c0ab-55dc-bb53-de433b0ad95c,Fusión,Carnes
+1b4095fb-347e-52b1-87f6-e314298945ba,836e3778-bf27-525c-b35b-1df858de24d2,Contemporáneo,Pastas
+1b4095fb-347e-52b1-87f6-e314298945ba,849c1044-c918-542b-a8e5-1c6b17e453ce,Contemporáneo,Vegetales
+6d3324ce-12db-5eb6-8b3c-88964ddcb4c7,7160655f-a02f-58d8-b051-34a544eda561,Tradicional,Postres
+6d3324ce-12db-5eb6-8b3c-88964ddcb4c7,be0e0463-3608-565f-b32d-5389e5c60af9,Fusión,Postres
+6d3324ce-12db-5eb6-8b3c-88964ddcb4c7,ded5df6a-4792-5c6e-a66a-1666b35ec470,Contemporáneo,Cocina regional
+6d3324ce-12db-5eb6-8b3c-88964ddcb4c7,e0920216-faa9-509f-ba79-1a06ad6cb621,Gourmet,Postres
+6d3324ce-12db-5eb6-8b3c-88964ddcb4c7,473d58a4-5498-5318-91b0-37eb64028928,Casero,Postres
+6d3324ce-12db-5eb6-8b3c-88964ddcb4c7,f5bcd0f8-5cc3-5588-a830-717c70bc8030,Fusión,Postres
+3f0c3e2b-b3e5-5f57-a1a7-3049121adb41,e3c0aad6-0e4c-535c-85cd-9660b855be3d,Casero,Postres
+3f0c3e2b-b3e5-5f57-a1a7-3049121adb41,be0e0463-3608-565f-b32d-5389e5c60af9,Tradicional,Pescados y mariscos
+3f0c3e2b-b3e5-5f57-a1a7-3049121adb41,cc2ed333-06d1-5e6e-8fb3-295c6be194e2,Gourmet,Pescados y mariscos
+90e028c2-58e6-550a-b374-dddc0ba91b8b,1879f0fa-3ce6-54d1-9f18-06ce3610af53,Casero,Postres
+90e028c2-58e6-550a-b374-dddc0ba91b8b,378d7039-5e24-5d60-8f8c-381efcd5a133,Fusión,Pastas
+90e028c2-58e6-550a-b374-dddc0ba91b8b,bc94d221-565f-596a-9e27-40fcf2342723,Tradicional,Carnes
+c02d9b39-dfba-587f-b28d-39ddb944393f,473d58a4-5498-5318-91b0-37eb64028928,Gourmet,Pescados y mariscos
+c02d9b39-dfba-587f-b28d-39ddb944393f,405a35c5-7944-5b52-9669-e6fb9835c456,Tradicional,Carnes
+c02d9b39-dfba-587f-b28d-39ddb944393f,646360e9-ab76-5cf6-8816-1cb0e351358e,Contemporáneo,Vegetales
+c02d9b39-dfba-587f-b28d-39ddb944393f,38a8678a-d719-5893-b20d-93ecde1cf351,Fusión,Carnes
+c02d9b39-dfba-587f-b28d-39ddb944393f,ccf366f9-5ecc-5da4-ad3e-16fc6070af4a,Gourmet,Vegetales
+c02d9b39-dfba-587f-b28d-39ddb944393f,6e8ee3e2-bec3-5819-a2c0-8489ff93d9d5,Contemporáneo,Pastas
+e367adad-a899-5a5a-8bf4-296410d5e76f,9fdc8338-e39e-54ab-be51-9bad9b2bcc6f,Contemporáneo,Vegetales
+e367adad-a899-5a5a-8bf4-296410d5e76f,38a8678a-d719-5893-b20d-93ecde1cf351,Contemporáneo,Carnes
+e367adad-a899-5a5a-8bf4-296410d5e76f,a280f796-71f5-5fbe-8590-69abf2c44b5a,Contemporáneo,Carnes
+e367adad-a899-5a5a-8bf4-296410d5e76f,bc94d221-565f-596a-9e27-40fcf2342723,Tradicional,Postres
+e367adad-a899-5a5a-8bf4-296410d5e76f,ccf366f9-5ecc-5da4-ad3e-16fc6070af4a,Casero,Postres
+e367adad-a899-5a5a-8bf4-296410d5e76f,849c1044-c918-542b-a8e5-1c6b17e453ce,Fusión,Postres
+ac31174d-2c51-552d-8669-a3d2fb1d40a2,d73c85d9-a988-5f55-8c37-45555ab7adb3,Gourmet,Cocina regional
+ac31174d-2c51-552d-8669-a3d2fb1d40a2,419008f4-3966-5792-909c-056a5a306c31,Casero,Vegetales
+ac31174d-2c51-552d-8669-a3d2fb1d40a2,df29d3b8-09c2-50a2-92ab-0475afe02113,Gourmet,Postres
+ac31174d-2c51-552d-8669-a3d2fb1d40a2,38a8678a-d719-5893-b20d-93ecde1cf351,Gourmet,Cocina regional
+c9cd7b36-e353-515f-9c7a-9f4628c38b28,116d052c-556b-5b2c-ab53-831e028b6e94,Gourmet,Vegetales
+c9cd7b36-e353-515f-9c7a-9f4628c38b28,1f0f1d9e-4007-5371-bf6e-befb828126c3,Fusión,Postres
+c9cd7b36-e353-515f-9c7a-9f4628c38b28,419008f4-3966-5792-909c-056a5a306c31,Gourmet,Postres
+c9cd7b36-e353-515f-9c7a-9f4628c38b28,ded5df6a-4792-5c6e-a66a-1666b35ec470,Tradicional,Carnes
+c9cd7b36-e353-515f-9c7a-9f4628c38b28,e3c0aad6-0e4c-535c-85cd-9660b855be3d,Fusión,Cocina regional
+c9cd7b36-e353-515f-9c7a-9f4628c38b28,849c1044-c918-542b-a8e5-1c6b17e453ce,Tradicional,Postres
+4c7fe680-72a4-5892-a9db-4c91a3f17a7c,67ebaf0e-8c97-5145-9ce2-eb22e30ad54a,Casero,Cocina regional
+4c7fe680-72a4-5892-a9db-4c91a3f17a7c,484baa6c-385f-569e-bdcf-d5553d72b870,Contemporáneo,Pescados y mariscos
+4c7fe680-72a4-5892-a9db-4c91a3f17a7c,8c06ffa2-571f-5038-81d8-acb47265310c,Gourmet,Pastas
+4c7fe680-72a4-5892-a9db-4c91a3f17a7c,a3e04d81-875a-575a-89fa-3635f747e854,Tradicional,Carnes
+4c7fe680-72a4-5892-a9db-4c91a3f17a7c,9d235a29-90cd-57ca-b2f6-12f248ebe914,Gourmet,Vegetales
+4c7fe680-72a4-5892-a9db-4c91a3f17a7c,fae3cffd-4526-5f9b-a793-a08f9da67ed7,Contemporáneo,Pescados y mariscos
+5495834f-3ca7-5267-8eac-9d1ab9c0ae18,143e8805-e233-51d8-83a8-f4da874bc4eb,Gourmet,Cocina regional
+5495834f-3ca7-5267-8eac-9d1ab9c0ae18,8f76926a-6f9a-5179-96a5-c10d593cb195,Gourmet,Pastas
+5495834f-3ca7-5267-8eac-9d1ab9c0ae18,b9479138-219c-5230-ab15-5edec9064126,Contemporáneo,Carnes
+5495834f-3ca7-5267-8eac-9d1ab9c0ae18,d8e30b36-bf87-5d88-a411-da8a1f841b29,Tradicional,Pescados y mariscos
+5495834f-3ca7-5267-8eac-9d1ab9c0ae18,836e3778-bf27-525c-b35b-1df858de24d2,Contemporáneo,Postres
+5eeca25a-a95c-5b33-86f1-7e3d946f8dbe,fae3cffd-4526-5f9b-a793-a08f9da67ed7,Contemporáneo,Pastas
+5eeca25a-a95c-5b33-86f1-7e3d946f8dbe,a3e04d81-875a-575a-89fa-3635f747e854,Tradicional,Carnes
+5eeca25a-a95c-5b33-86f1-7e3d946f8dbe,df0ce0ab-c0ab-55dc-bb53-de433b0ad95c,Fusión,Pescados y mariscos
+5eeca25a-a95c-5b33-86f1-7e3d946f8dbe,24534442-c79b-5bd3-86a1-b9b23a0bc2ab,Tradicional,Vegetales
+08c0a931-facc-5548-b7ac-138e22f2ea20,484baa6c-385f-569e-bdcf-d5553d72b870,Fusión,Pescados y mariscos
+08c0a931-facc-5548-b7ac-138e22f2ea20,ab71ea4b-accd-5054-9d62-221a226d8717,Gourmet,Pastas
+08c0a931-facc-5548-b7ac-138e22f2ea20,d73c85d9-a988-5f55-8c37-45555ab7adb3,Gourmet,Pastas
+08c0a931-facc-5548-b7ac-138e22f2ea20,df0ce0ab-c0ab-55dc-bb53-de433b0ad95c,Casero,Postres
+08c0a931-facc-5548-b7ac-138e22f2ea20,d5e11d14-2fd5-5535-a693-45bae50ff7ea,Tradicional,Pescados y mariscos
+2d3f4a37-5c6e-5643-b65e-76ed053665f2,484baa6c-385f-569e-bdcf-d5553d72b870,Gourmet,Pescados y mariscos
+2d3f4a37-5c6e-5643-b65e-76ed053665f2,7160655f-a02f-58d8-b051-34a544eda561,Gourmet,Postres
+2d3f4a37-5c6e-5643-b65e-76ed053665f2,8c06ffa2-571f-5038-81d8-acb47265310c,Tradicional,Pastas
+2d3f4a37-5c6e-5643-b65e-76ed053665f2,73939612-bd12-50c0-a78d-546c007647d5,Fusión,Pescados y mariscos
+2d3f4a37-5c6e-5643-b65e-76ed053665f2,836e3778-bf27-525c-b35b-1df858de24d2,Gourmet,Postres
+2d3f4a37-5c6e-5643-b65e-76ed053665f2,df29d3b8-09c2-50a2-92ab-0475afe02113,Gourmet,Postres
+3d5abae6-89d7-5dc7-a516-850ceedd9e26,8c06ffa2-571f-5038-81d8-acb47265310c,Casero,Postres
+3d5abae6-89d7-5dc7-a516-850ceedd9e26,c4634261-11d5-5aa4-9e2d-5d11a1c4cfee,Casero,Postres
+3d5abae6-89d7-5dc7-a516-850ceedd9e26,7160655f-a02f-58d8-b051-34a544eda561,Contemporáneo,Carnes
+3d5abae6-89d7-5dc7-a516-850ceedd9e26,5407ba2d-8cb6-529e-963f-af83729c33b9,Contemporáneo,Pastas
+3d5abae6-89d7-5dc7-a516-850ceedd9e26,9220d986-c5ea-5d50-b1cf-ab5bcf50676c,Fusión,Vegetales
+b7302313-6656-5f0f-b550-d4214dce185d,b9479138-219c-5230-ab15-5edec9064126,Contemporáneo,Carnes
+b7302313-6656-5f0f-b550-d4214dce185d,5407ba2d-8cb6-529e-963f-af83729c33b9,Fusión,Vegetales
+b7302313-6656-5f0f-b550-d4214dce185d,8c06ffa2-571f-5038-81d8-acb47265310c,Contemporáneo,Vegetales
+b7302313-6656-5f0f-b550-d4214dce185d,df29d3b8-09c2-50a2-92ab-0475afe02113,Gourmet,Vegetales
+7863d939-0dd6-595a-aa90-6b11afde0dc1,bc94d221-565f-596a-9e27-40fcf2342723,Gourmet,Cocina regional
+7863d939-0dd6-595a-aa90-6b11afde0dc1,116d052c-556b-5b2c-ab53-831e028b6e94,Fusión,Pescados y mariscos
+7863d939-0dd6-595a-aa90-6b11afde0dc1,7d6ab656-f013-5795-8abf-ad44da728586,Tradicional,Pescados y mariscos
+19edc1e4-9f4d-505f-9acb-a3ab4a834127,cc2ed333-06d1-5e6e-8fb3-295c6be194e2,Fusión,Cocina regional
+19edc1e4-9f4d-505f-9acb-a3ab4a834127,8f76926a-6f9a-5179-96a5-c10d593cb195,Tradicional,Pastas
+c072393e-56a4-5104-a637-b02a71de033f,be0e0463-3608-565f-b32d-5389e5c60af9,Contemporáneo,Pastas
+c072393e-56a4-5104-a637-b02a71de033f,73939612-bd12-50c0-a78d-546c007647d5,Tradicional,Vegetales
+c0418b6e-66f2-530d-85b4-be7e8014eec9,cc2ed333-06d1-5e6e-8fb3-295c6be194e2,Contemporáneo,Pescados y mariscos
+c0418b6e-66f2-530d-85b4-be7e8014eec9,d5e11d14-2fd5-5535-a693-45bae50ff7ea,Casero,Vegetales
+c0418b6e-66f2-530d-85b4-be7e8014eec9,b9479138-219c-5230-ab15-5edec9064126,Contemporáneo,Pescados y mariscos
+c0418b6e-66f2-530d-85b4-be7e8014eec9,e3c0aad6-0e4c-535c-85cd-9660b855be3d,Tradicional,Pescados y mariscos
+c0418b6e-66f2-530d-85b4-be7e8014eec9,473d58a4-5498-5318-91b0-37eb64028928,Fusión,Vegetales
+dcad8bb3-94ed-52cd-a404-92aff6a1adf5,116d052c-556b-5b2c-ab53-831e028b6e94,Casero,Carnes
+dcad8bb3-94ed-52cd-a404-92aff6a1adf5,8c06ffa2-571f-5038-81d8-acb47265310c,Gourmet,Cocina regional
+dcad8bb3-94ed-52cd-a404-92aff6a1adf5,67ebaf0e-8c97-5145-9ce2-eb22e30ad54a,Casero,Postres
+43f8e997-b141-5ed4-a32e-8edec0524793,8c06ffa2-571f-5038-81d8-acb47265310c,Casero,Cocina regional
+43f8e997-b141-5ed4-a32e-8edec0524793,5407ba2d-8cb6-529e-963f-af83729c33b9,Fusión,Vegetales
+43f8e997-b141-5ed4-a32e-8edec0524793,38a8678a-d719-5893-b20d-93ecde1cf351,Contemporáneo,Vegetales
+4d0b796f-64df-583d-a711-3e72f508c600,9fdc8338-e39e-54ab-be51-9bad9b2bcc6f,Casero,Pastas
+4d0b796f-64df-583d-a711-3e72f508c600,d73c85d9-a988-5f55-8c37-45555ab7adb3,Gourmet,Pescados y mariscos
+4d0b796f-64df-583d-a711-3e72f508c600,cc2ed333-06d1-5e6e-8fb3-295c6be194e2,Tradicional,Vegetales
+4d0b796f-64df-583d-a711-3e72f508c600,be0e0463-3608-565f-b32d-5389e5c60af9,Fusión,Carnes
+4d0b796f-64df-583d-a711-3e72f508c600,849c1044-c918-542b-a8e5-1c6b17e453ce,Casero,Pastas
+4d0b796f-64df-583d-a711-3e72f508c600,75694529-3b47-5da2-9b77-857c7b41e8e0,Tradicional,Vegetales
+d7c1f399-3936-5d21-a9b3-a36f442aa970,bc94d221-565f-596a-9e27-40fcf2342723,Contemporáneo,Pescados y mariscos
+d7c1f399-3936-5d21-a9b3-a36f442aa970,9220d986-c5ea-5d50-b1cf-ab5bcf50676c,Fusión,Vegetales
+d7c1f399-3936-5d21-a9b3-a36f442aa970,484baa6c-385f-569e-bdcf-d5553d72b870,Tradicional,Vegetales
+d7c1f399-3936-5d21-a9b3-a36f442aa970,e0920216-faa9-509f-ba79-1a06ad6cb621,Fusión,Cocina regional
+d7c1f399-3936-5d21-a9b3-a36f442aa970,f5bcd0f8-5cc3-5588-a830-717c70bc8030,Casero,Carnes
+8601c546-ac79-5bbb-848d-0453ac54331c,484baa6c-385f-569e-bdcf-d5553d72b870,Gourmet,Postres
+8601c546-ac79-5bbb-848d-0453ac54331c,7160655f-a02f-58d8-b051-34a544eda561,Casero,Pescados y mariscos
+8601c546-ac79-5bbb-848d-0453ac54331c,a3e04d81-875a-575a-89fa-3635f747e854,Casero,Carnes
+8601c546-ac79-5bbb-848d-0453ac54331c,ded5df6a-4792-5c6e-a66a-1666b35ec470,Fusión,Pastas
+8601c546-ac79-5bbb-848d-0453ac54331c,24534442-c79b-5bd3-86a1-b9b23a0bc2ab,Casero,Carnes
+8601c546-ac79-5bbb-848d-0453ac54331c,f5bcd0f8-5cc3-5588-a830-717c70bc8030,Casero,Pastas
+19168fac-d960-5cd4-970b-39fc7cb2ee83,7160655f-a02f-58d8-b051-34a544eda561,Casero,Cocina regional
+19168fac-d960-5cd4-970b-39fc7cb2ee83,d8e30b36-bf87-5d88-a411-da8a1f841b29,Fusión,Vegetales
+19168fac-d960-5cd4-970b-39fc7cb2ee83,419008f4-3966-5792-909c-056a5a306c31,Casero,Postres
+19168fac-d960-5cd4-970b-39fc7cb2ee83,be0e0463-3608-565f-b32d-5389e5c60af9,Tradicional,Vegetales
+19168fac-d960-5cd4-970b-39fc7cb2ee83,5e3628cf-ba60-5279-81ed-fc60a3a5d890,Casero,Carnes
+19168fac-d960-5cd4-970b-39fc7cb2ee83,d5e11d14-2fd5-5535-a693-45bae50ff7ea,Contemporáneo,Carnes
+753b3bb2-605d-5310-b977-148ee89302bf,646360e9-ab76-5cf6-8816-1cb0e351358e,Tradicional,Postres
+753b3bb2-605d-5310-b977-148ee89302bf,9220d986-c5ea-5d50-b1cf-ab5bcf50676c,Casero,Vegetales
+753b3bb2-605d-5310-b977-148ee89302bf,405a35c5-7944-5b52-9669-e6fb9835c456,Casero,Carnes
+753b3bb2-605d-5310-b977-148ee89302bf,7160655f-a02f-58d8-b051-34a544eda561,Casero,Vegetales
+753b3bb2-605d-5310-b977-148ee89302bf,a3e04d81-875a-575a-89fa-3635f747e854,Tradicional,Carnes
+753b3bb2-605d-5310-b977-148ee89302bf,a0841842-3d98-57e9-b7ad-2e9a68f8343a,Contemporáneo,Pescados y mariscos
+2a8452e2-546d-59bb-a611-9d32e50ba0ed,9220d986-c5ea-5d50-b1cf-ab5bcf50676c,Fusión,Pastas
+2a8452e2-546d-59bb-a611-9d32e50ba0ed,d8e30b36-bf87-5d88-a411-da8a1f841b29,Fusión,Pescados y mariscos
+2a8452e2-546d-59bb-a611-9d32e50ba0ed,be0e0463-3608-565f-b32d-5389e5c60af9,Casero,Cocina regional
+2a8452e2-546d-59bb-a611-9d32e50ba0ed,5e3628cf-ba60-5279-81ed-fc60a3a5d890,Fusión,Pescados y mariscos
+2a8452e2-546d-59bb-a611-9d32e50ba0ed,a280f796-71f5-5fbe-8590-69abf2c44b5a,Tradicional,Vegetales
+a97f24b5-992e-5845-97ce-248b8718c877,df0ce0ab-c0ab-55dc-bb53-de433b0ad95c,Gourmet,Postres
+a97f24b5-992e-5845-97ce-248b8718c877,a0841842-3d98-57e9-b7ad-2e9a68f8343a,Gourmet,Vegetales
+77d565d9-3113-5995-bfaf-5920076f6a00,484baa6c-385f-569e-bdcf-d5553d72b870,Fusión,Postres
+77d565d9-3113-5995-bfaf-5920076f6a00,1e71a1a8-1297-55e0-94f6-5bfe2d5b8a06,Fusión,Cocina regional
+0b707995-baae-5e70-995c-c955451e54ec,a280f796-71f5-5fbe-8590-69abf2c44b5a,Gourmet,Postres
+0b707995-baae-5e70-995c-c955451e54ec,a0841842-3d98-57e9-b7ad-2e9a68f8343a,Gourmet,Vegetales
+0b707995-baae-5e70-995c-c955451e54ec,f5bcd0f8-5cc3-5588-a830-717c70bc8030,Fusión,Cocina regional
+0b707995-baae-5e70-995c-c955451e54ec,143e8805-e233-51d8-83a8-f4da874bc4eb,Gourmet,Postres
+7d257369-cef0-50f2-9d25-55e0b91df223,a0841842-3d98-57e9-b7ad-2e9a68f8343a,Contemporáneo,Carnes
+7d257369-cef0-50f2-9d25-55e0b91df223,e3c0aad6-0e4c-535c-85cd-9660b855be3d,Contemporáneo,Vegetales
+7d257369-cef0-50f2-9d25-55e0b91df223,405a35c5-7944-5b52-9669-e6fb9835c456,Gourmet,Pescados y mariscos
+7d257369-cef0-50f2-9d25-55e0b91df223,7160655f-a02f-58d8-b051-34a544eda561,Contemporáneo,Postres
+d5bb871d-0ca4-5866-ac68-458663429ea1,b9479138-219c-5230-ab15-5edec9064126,Contemporáneo,Postres
+d5bb871d-0ca4-5866-ac68-458663429ea1,419008f4-3966-5792-909c-056a5a306c31,Fusión,Pastas
+d5bb871d-0ca4-5866-ac68-458663429ea1,38a8678a-d719-5893-b20d-93ecde1cf351,Casero,Cocina regional
+d5bb871d-0ca4-5866-ac68-458663429ea1,73939612-bd12-50c0-a78d-546c007647d5,Fusión,Pastas
+d5bb871d-0ca4-5866-ac68-458663429ea1,a3e04d81-875a-575a-89fa-3635f747e854,Fusión,Postres
+d5bb871d-0ca4-5866-ac68-458663429ea1,bc94d221-565f-596a-9e27-40fcf2342723,Casero,Pastas
+77e93ef2-6015-55ef-973d-3a8dc770555a,22cda17e-167c-539d-925e-2e1402d9b674,Fusión,Vegetales
+77e93ef2-6015-55ef-973d-3a8dc770555a,646360e9-ab76-5cf6-8816-1cb0e351358e,Casero,Pastas
+77e93ef2-6015-55ef-973d-3a8dc770555a,c4634261-11d5-5aa4-9e2d-5d11a1c4cfee,Contemporáneo,Carnes
+e06996b2-0a5d-5c20-85b3-bb47448719e7,ccf366f9-5ecc-5da4-ad3e-16fc6070af4a,Casero,Pastas
+e06996b2-0a5d-5c20-85b3-bb47448719e7,df0ce0ab-c0ab-55dc-bb53-de433b0ad95c,Tradicional,Pastas
+e06996b2-0a5d-5c20-85b3-bb47448719e7,75694529-3b47-5da2-9b77-857c7b41e8e0,Tradicional,Pescados y mariscos
+e06996b2-0a5d-5c20-85b3-bb47448719e7,c4634261-11d5-5aa4-9e2d-5d11a1c4cfee,Contemporáneo,Postres
+e06996b2-0a5d-5c20-85b3-bb47448719e7,9fdc8338-e39e-54ab-be51-9bad9b2bcc6f,Casero,Pastas
+e06996b2-0a5d-5c20-85b3-bb47448719e7,1f0f1d9e-4007-5371-bf6e-befb828126c3,Contemporáneo,Vegetales
+ad509c33-b295-5488-bebc-62b726dea03e,6e8ee3e2-bec3-5819-a2c0-8489ff93d9d5,Fusión,Pastas
+ad509c33-b295-5488-bebc-62b726dea03e,5407ba2d-8cb6-529e-963f-af83729c33b9,Fusión,Vegetales
+ad509c33-b295-5488-bebc-62b726dea03e,22cda17e-167c-539d-925e-2e1402d9b674,Casero,Pescados y mariscos
+ad509c33-b295-5488-bebc-62b726dea03e,9220d986-c5ea-5d50-b1cf-ab5bcf50676c,Tradicional,Pastas
+2eeed41a-066f-522a-8695-59571d21996c,c4634261-11d5-5aa4-9e2d-5d11a1c4cfee,Fusión,Postres
+2eeed41a-066f-522a-8695-59571d21996c,143e8805-e233-51d8-83a8-f4da874bc4eb,Casero,Postres
+2eeed41a-066f-522a-8695-59571d21996c,d8e30b36-bf87-5d88-a411-da8a1f841b29,Tradicional,Pescados y mariscos
+2eeed41a-066f-522a-8695-59571d21996c,5407ba2d-8cb6-529e-963f-af83729c33b9,Gourmet,Pescados y mariscos
+2eeed41a-066f-522a-8695-59571d21996c,9fdc8338-e39e-54ab-be51-9bad9b2bcc6f,Gourmet,Carnes
+2eeed41a-066f-522a-8695-59571d21996c,1e71a1a8-1297-55e0-94f6-5bfe2d5b8a06,Casero,Carnes
+58f63941-3874-5ced-acdd-feba86793952,fae3cffd-4526-5f9b-a793-a08f9da67ed7,Fusión,Pastas
+58f63941-3874-5ced-acdd-feba86793952,c4634261-11d5-5aa4-9e2d-5d11a1c4cfee,Gourmet,Vegetales
+014c4bea-acfe-5d74-8892-249f08e236a3,bc94d221-565f-596a-9e27-40fcf2342723,Casero,Vegetales
+014c4bea-acfe-5d74-8892-249f08e236a3,5407ba2d-8cb6-529e-963f-af83729c33b9,Gourmet,Pescados y mariscos
+014c4bea-acfe-5d74-8892-249f08e236a3,d8e30b36-bf87-5d88-a411-da8a1f841b29,Gourmet,Cocina regional
+014c4bea-acfe-5d74-8892-249f08e236a3,df29d3b8-09c2-50a2-92ab-0475afe02113,Casero,Cocina regional
+014c4bea-acfe-5d74-8892-249f08e236a3,ccf366f9-5ecc-5da4-ad3e-16fc6070af4a,Casero,Cocina regional
+014c4bea-acfe-5d74-8892-249f08e236a3,ded5df6a-4792-5c6e-a66a-1666b35ec470,Contemporáneo,Vegetales
+4d4e810a-5aeb-5ddd-a6bd-659d65451fa3,5407ba2d-8cb6-529e-963f-af83729c33b9,Contemporáneo,Pescados y mariscos
+4d4e810a-5aeb-5ddd-a6bd-659d65451fa3,1e71a1a8-1297-55e0-94f6-5bfe2d5b8a06,Gourmet,Pescados y mariscos
+4d4e810a-5aeb-5ddd-a6bd-659d65451fa3,9d235a29-90cd-57ca-b2f6-12f248ebe914,Contemporáneo,Cocina regional
+1e2989e2-f088-5651-87b0-53efc3b7f95c,d8e30b36-bf87-5d88-a411-da8a1f841b29,Casero,Cocina regional
+1e2989e2-f088-5651-87b0-53efc3b7f95c,7d6ab656-f013-5795-8abf-ad44da728586,Gourmet,Cocina regional
+1e2989e2-f088-5651-87b0-53efc3b7f95c,419008f4-3966-5792-909c-056a5a306c31,Contemporáneo,Pastas
+1e2989e2-f088-5651-87b0-53efc3b7f95c,d5e11d14-2fd5-5535-a693-45bae50ff7ea,Gourmet,Carnes
+1e2989e2-f088-5651-87b0-53efc3b7f95c,6e8ee3e2-bec3-5819-a2c0-8489ff93d9d5,Casero,Pescados y mariscos
+5442849d-03b8-523d-b452-91a9f4e72b35,6e8ee3e2-bec3-5819-a2c0-8489ff93d9d5,Contemporáneo,Vegetales
+5442849d-03b8-523d-b452-91a9f4e72b35,d8e30b36-bf87-5d88-a411-da8a1f841b29,Contemporáneo,Pescados y mariscos
+5442849d-03b8-523d-b452-91a9f4e72b35,836e3778-bf27-525c-b35b-1df858de24d2,Fusión,Carnes
+5442849d-03b8-523d-b452-91a9f4e72b35,d73c85d9-a988-5f55-8c37-45555ab7adb3,Casero,Vegetales
+5442849d-03b8-523d-b452-91a9f4e72b35,1879f0fa-3ce6-54d1-9f18-06ce3610af53,Gourmet,Vegetales
+5442849d-03b8-523d-b452-91a9f4e72b35,1f0f1d9e-4007-5371-bf6e-befb828126c3,Gourmet,Pescados y mariscos
+9cef5500-4753-540c-a8ff-817374afab9a,836e3778-bf27-525c-b35b-1df858de24d2,Fusión,Pescados y mariscos
+9cef5500-4753-540c-a8ff-817374afab9a,849c1044-c918-542b-a8e5-1c6b17e453ce,Tradicional,Cocina regional
+9cef5500-4753-540c-a8ff-817374afab9a,df0ce0ab-c0ab-55dc-bb53-de433b0ad95c,Gourmet,Cocina regional
+9cef5500-4753-540c-a8ff-817374afab9a,6e8ee3e2-bec3-5819-a2c0-8489ff93d9d5,Tradicional,Postres
+9cef5500-4753-540c-a8ff-817374afab9a,ded5df6a-4792-5c6e-a66a-1666b35ec470,Gourmet,Pastas
+4f23960c-6cb9-56f6-ac8d-d0aef57a17b1,b9479138-219c-5230-ab15-5edec9064126,Contemporáneo,Cocina regional
+4f23960c-6cb9-56f6-ac8d-d0aef57a17b1,73939612-bd12-50c0-a78d-546c007647d5,Gourmet,Vegetales
+4f23960c-6cb9-56f6-ac8d-d0aef57a17b1,143e8805-e233-51d8-83a8-f4da874bc4eb,Fusión,Carnes
+4f23960c-6cb9-56f6-ac8d-d0aef57a17b1,405a35c5-7944-5b52-9669-e6fb9835c456,Gourmet,Postres
+4f23960c-6cb9-56f6-ac8d-d0aef57a17b1,d5e11d14-2fd5-5535-a693-45bae50ff7ea,Casero,Pescados y mariscos
+4f23960c-6cb9-56f6-ac8d-d0aef57a17b1,67ebaf0e-8c97-5145-9ce2-eb22e30ad54a,Contemporáneo,Postres
+aab6c208-b1b9-5e56-ad79-f404d3d4fdba,9fdc8338-e39e-54ab-be51-9bad9b2bcc6f,Casero,Postres
+aab6c208-b1b9-5e56-ad79-f404d3d4fdba,836e3778-bf27-525c-b35b-1df858de24d2,Casero,Vegetales
+aab6c208-b1b9-5e56-ad79-f404d3d4fdba,f5bcd0f8-5cc3-5588-a830-717c70bc8030,Casero,Cocina regional
+aab6c208-b1b9-5e56-ad79-f404d3d4fdba,fae3cffd-4526-5f9b-a793-a08f9da67ed7,Casero,Postres
+aab6c208-b1b9-5e56-ad79-f404d3d4fdba,378d7039-5e24-5d60-8f8c-381efcd5a133,Contemporáneo,Vegetales
+b6d3b335-b6a4-5a9c-bcd5-d69917d5dd1a,38a8678a-d719-5893-b20d-93ecde1cf351,Fusión,Vegetales
+b6d3b335-b6a4-5a9c-bcd5-d69917d5dd1a,8c06ffa2-571f-5038-81d8-acb47265310c,Gourmet,Postres
+b6d3b335-b6a4-5a9c-bcd5-d69917d5dd1a,836e3778-bf27-525c-b35b-1df858de24d2,Fusión,Postres
+b6d3b335-b6a4-5a9c-bcd5-d69917d5dd1a,be0e0463-3608-565f-b32d-5389e5c60af9,Gourmet,Cocina regional
+b6d3b335-b6a4-5a9c-bcd5-d69917d5dd1a,a0841842-3d98-57e9-b7ad-2e9a68f8343a,Gourmet,Pescados y mariscos
+b6d3b335-b6a4-5a9c-bcd5-d69917d5dd1a,cc2ed333-06d1-5e6e-8fb3-295c6be194e2,Contemporáneo,Carnes
+43ec0db9-0d81-5b15-96b9-d1357e8d4290,d5e11d14-2fd5-5535-a693-45bae50ff7ea,Tradicional,Vegetales
+43ec0db9-0d81-5b15-96b9-d1357e8d4290,7160655f-a02f-58d8-b051-34a544eda561,Casero,Pescados y mariscos
+43ec0db9-0d81-5b15-96b9-d1357e8d4290,849c1044-c918-542b-a8e5-1c6b17e453ce,Fusión,Pescados y mariscos
+43ec0db9-0d81-5b15-96b9-d1357e8d4290,df29d3b8-09c2-50a2-92ab-0475afe02113,Casero,Carnes
+2ba4fbb7-6f02-517d-887d-524f1a28d645,e3c0aad6-0e4c-535c-85cd-9660b855be3d,Contemporáneo,Pescados y mariscos
+2ba4fbb7-6f02-517d-887d-524f1a28d645,e0920216-faa9-509f-ba79-1a06ad6cb621,Fusión,Cocina regional
+413cf02a-38a9-58b9-9cc2-34cec21643f6,849c1044-c918-542b-a8e5-1c6b17e453ce,Gourmet,Cocina regional
+413cf02a-38a9-58b9-9cc2-34cec21643f6,405a35c5-7944-5b52-9669-e6fb9835c456,Fusión,Cocina regional
+413cf02a-38a9-58b9-9cc2-34cec21643f6,1879f0fa-3ce6-54d1-9f18-06ce3610af53,Tradicional,Cocina regional
+413cf02a-38a9-58b9-9cc2-34cec21643f6,1f0f1d9e-4007-5371-bf6e-befb828126c3,Gourmet,Postres
+413cf02a-38a9-58b9-9cc2-34cec21643f6,d73c85d9-a988-5f55-8c37-45555ab7adb3,Casero,Carnes
+e065c9a4-a214-5fcd-865c-413ddf01c62c,c4634261-11d5-5aa4-9e2d-5d11a1c4cfee,Tradicional,Postres
+e065c9a4-a214-5fcd-865c-413ddf01c62c,646360e9-ab76-5cf6-8816-1cb0e351358e,Contemporáneo,Pastas
+e065c9a4-a214-5fcd-865c-413ddf01c62c,116d052c-556b-5b2c-ab53-831e028b6e94,Casero,Pescados y mariscos
+44cf3c5f-1fc2-5b96-b083-d5aa017c0186,c8f27292-93fa-5620-b769-060e92cd556b,Gourmet,Pastas
+44cf3c5f-1fc2-5b96-b083-d5aa017c0186,b9479138-219c-5230-ab15-5edec9064126,Casero,Pescados y mariscos
+44cf3c5f-1fc2-5b96-b083-d5aa017c0186,d5e11d14-2fd5-5535-a693-45bae50ff7ea,Casero,Vegetales
+44cf3c5f-1fc2-5b96-b083-d5aa017c0186,a0841842-3d98-57e9-b7ad-2e9a68f8343a,Gourmet,Pastas
+9a401a51-3cf3-5e5d-aa46-be68c1b28af0,22cda17e-167c-539d-925e-2e1402d9b674,Contemporáneo,Cocina regional
+9a401a51-3cf3-5e5d-aa46-be68c1b28af0,c8f27292-93fa-5620-b769-060e92cd556b,Fusión,Pescados y mariscos
+de9e0b64-7cbd-5194-8f51-83995a357e8a,a3e04d81-875a-575a-89fa-3635f747e854,Tradicional,Cocina regional
+de9e0b64-7cbd-5194-8f51-83995a357e8a,e3c0aad6-0e4c-535c-85cd-9660b855be3d,Gourmet,Cocina regional
+de9e0b64-7cbd-5194-8f51-83995a357e8a,7160655f-a02f-58d8-b051-34a544eda561,Gourmet,Postres
+de9e0b64-7cbd-5194-8f51-83995a357e8a,1f0f1d9e-4007-5371-bf6e-befb828126c3,Casero,Vegetales
+de9e0b64-7cbd-5194-8f51-83995a357e8a,8f76926a-6f9a-5179-96a5-c10d593cb195,Gourmet,Pescados y mariscos
+de9e0b64-7cbd-5194-8f51-83995a357e8a,22cda17e-167c-539d-925e-2e1402d9b674,Fusión,Vegetales
+0ad2820e-37d6-5590-8328-51d65b44ef31,7160655f-a02f-58d8-b051-34a544eda561,Fusión,Cocina regional
+0ad2820e-37d6-5590-8328-51d65b44ef31,73939612-bd12-50c0-a78d-546c007647d5,Tradicional,Pastas
+0ad2820e-37d6-5590-8328-51d65b44ef31,24534442-c79b-5bd3-86a1-b9b23a0bc2ab,Gourmet,Postres
+0ad2820e-37d6-5590-8328-51d65b44ef31,8c06ffa2-571f-5038-81d8-acb47265310c,Contemporáneo,Pastas
+2615e7d2-d8f2-5620-8aa0-bff51dfc2954,849c1044-c918-542b-a8e5-1c6b17e453ce,Contemporáneo,Postres
+2615e7d2-d8f2-5620-8aa0-bff51dfc2954,ab71ea4b-accd-5054-9d62-221a226d8717,Fusión,Cocina regional
+2615e7d2-d8f2-5620-8aa0-bff51dfc2954,df29d3b8-09c2-50a2-92ab-0475afe02113,Gourmet,Postres
+2615e7d2-d8f2-5620-8aa0-bff51dfc2954,df0ce0ab-c0ab-55dc-bb53-de433b0ad95c,Tradicional,Vegetales
+2615e7d2-d8f2-5620-8aa0-bff51dfc2954,67ebaf0e-8c97-5145-9ce2-eb22e30ad54a,Tradicional,Postres
+2615e7d2-d8f2-5620-8aa0-bff51dfc2954,24534442-c79b-5bd3-86a1-b9b23a0bc2ab,Casero,Vegetales
+a17e795c-da71-5ff2-ab1e-8d419bc8b9e4,a0841842-3d98-57e9-b7ad-2e9a68f8343a,Contemporáneo,Pescados y mariscos
+a17e795c-da71-5ff2-ab1e-8d419bc8b9e4,ded5df6a-4792-5c6e-a66a-1666b35ec470,Casero,Pastas
+a17e795c-da71-5ff2-ab1e-8d419bc8b9e4,378d7039-5e24-5d60-8f8c-381efcd5a133,Casero,Vegetales
+a17e795c-da71-5ff2-ab1e-8d419bc8b9e4,c8f27292-93fa-5620-b769-060e92cd556b,Tradicional,Pastas
+a17e795c-da71-5ff2-ab1e-8d419bc8b9e4,c4634261-11d5-5aa4-9e2d-5d11a1c4cfee,Contemporáneo,Pescados y mariscos
+a17e795c-da71-5ff2-ab1e-8d419bc8b9e4,6e8ee3e2-bec3-5819-a2c0-8489ff93d9d5,Tradicional,Carnes
+1807fe22-94b4-58c9-8202-e747084e398f,849c1044-c918-542b-a8e5-1c6b17e453ce,Casero,Pastas
+1807fe22-94b4-58c9-8202-e747084e398f,22cda17e-167c-539d-925e-2e1402d9b674,Tradicional,Postres
+1807fe22-94b4-58c9-8202-e747084e398f,75694529-3b47-5da2-9b77-857c7b41e8e0,Casero,Cocina regional
+6596f8b8-fe98-5d40-b439-570eb1b98a5b,5407ba2d-8cb6-529e-963f-af83729c33b9,Gourmet,Vegetales
+6596f8b8-fe98-5d40-b439-570eb1b98a5b,7160655f-a02f-58d8-b051-34a544eda561,Tradicional,Pastas
+6596f8b8-fe98-5d40-b439-570eb1b98a5b,d8e30b36-bf87-5d88-a411-da8a1f841b29,Tradicional,Pastas
+6596f8b8-fe98-5d40-b439-570eb1b98a5b,9220d986-c5ea-5d50-b1cf-ab5bcf50676c,Fusión,Pescados y mariscos
+6596f8b8-fe98-5d40-b439-570eb1b98a5b,e0920216-faa9-509f-ba79-1a06ad6cb621,Gourmet,Postres
+7ad11d64-5aa9-5d0f-a9cc-66d93179674b,bc94d221-565f-596a-9e27-40fcf2342723,Contemporáneo,Carnes
+7ad11d64-5aa9-5d0f-a9cc-66d93179674b,22cda17e-167c-539d-925e-2e1402d9b674,Casero,Pastas
+7ad11d64-5aa9-5d0f-a9cc-66d93179674b,ccf366f9-5ecc-5da4-ad3e-16fc6070af4a,Tradicional,Carnes
+7ad11d64-5aa9-5d0f-a9cc-66d93179674b,d8e30b36-bf87-5d88-a411-da8a1f841b29,Tradicional,Postres
+7ad11d64-5aa9-5d0f-a9cc-66d93179674b,8f76926a-6f9a-5179-96a5-c10d593cb195,Gourmet,Cocina regional
+7ad11d64-5aa9-5d0f-a9cc-66d93179674b,8c06ffa2-571f-5038-81d8-acb47265310c,Tradicional,Pastas
+ba094f14-8a8d-524d-b4a8-38cd837a8f82,8f76926a-6f9a-5179-96a5-c10d593cb195,Gourmet,Vegetales
+ba094f14-8a8d-524d-b4a8-38cd837a8f82,1f0f1d9e-4007-5371-bf6e-befb828126c3,Contemporáneo,Pescados y mariscos
+ba094f14-8a8d-524d-b4a8-38cd837a8f82,9220d986-c5ea-5d50-b1cf-ab5bcf50676c,Fusión,Pastas
+ba094f14-8a8d-524d-b4a8-38cd837a8f82,df0ce0ab-c0ab-55dc-bb53-de433b0ad95c,Fusión,Pastas
+8a917d90-c3c2-5a4e-9435-b658cde6d082,e95c884d-40d7-57c0-a10f-f3a21f55e9ae,Fusión,Vegetales
+8a917d90-c3c2-5a4e-9435-b658cde6d082,9fdc8338-e39e-54ab-be51-9bad9b2bcc6f,Gourmet,Cocina regional
+8a917d90-c3c2-5a4e-9435-b658cde6d082,d5e11d14-2fd5-5535-a693-45bae50ff7ea,Fusión,Pastas
+8a917d90-c3c2-5a4e-9435-b658cde6d082,75694529-3b47-5da2-9b77-857c7b41e8e0,Tradicional,Pescados y mariscos
+8a917d90-c3c2-5a4e-9435-b658cde6d082,d73c85d9-a988-5f55-8c37-45555ab7adb3,Gourmet,Cocina regional
+bcef7920-f60e-52d9-ba4a-de65c4d92dd3,ab71ea4b-accd-5054-9d62-221a226d8717,Gourmet,Pescados y mariscos
+bcef7920-f60e-52d9-ba4a-de65c4d92dd3,a3e04d81-875a-575a-89fa-3635f747e854,Contemporáneo,Carnes
+bcef7920-f60e-52d9-ba4a-de65c4d92dd3,f5bcd0f8-5cc3-5588-a830-717c70bc8030,Contemporáneo,Cocina regional
+bcef7920-f60e-52d9-ba4a-de65c4d92dd3,378d7039-5e24-5d60-8f8c-381efcd5a133,Tradicional,Pastas
+bcef7920-f60e-52d9-ba4a-de65c4d92dd3,b9479138-219c-5230-ab15-5edec9064126,Casero,Cocina regional
+bcef7920-f60e-52d9-ba4a-de65c4d92dd3,9220d986-c5ea-5d50-b1cf-ab5bcf50676c,Fusión,Cocina regional
+abbbcece-b51e-5054-9a38-daedbe423f4b,38a8678a-d719-5893-b20d-93ecde1cf351,Fusión,Vegetales
+abbbcece-b51e-5054-9a38-daedbe423f4b,22cda17e-167c-539d-925e-2e1402d9b674,Casero,Cocina regional
+06c46fe9-8930-5c33-bf34-6bacf3610009,e3c0aad6-0e4c-535c-85cd-9660b855be3d,Contemporáneo,Postres
+06c46fe9-8930-5c33-bf34-6bacf3610009,8c06ffa2-571f-5038-81d8-acb47265310c,Tradicional,Vegetales
+06c46fe9-8930-5c33-bf34-6bacf3610009,22cda17e-167c-539d-925e-2e1402d9b674,Tradicional,Pescados y mariscos
+06c46fe9-8930-5c33-bf34-6bacf3610009,d8e30b36-bf87-5d88-a411-da8a1f841b29,Gourmet,Postres
+2f2a9d9e-983a-5ee6-8b87-0c8b04285212,cc2ed333-06d1-5e6e-8fb3-295c6be194e2,Tradicional,Carnes
+2f2a9d9e-983a-5ee6-8b87-0c8b04285212,e3c0aad6-0e4c-535c-85cd-9660b855be3d,Casero,Pescados y mariscos
+2f2a9d9e-983a-5ee6-8b87-0c8b04285212,419008f4-3966-5792-909c-056a5a306c31,Tradicional,Vegetales
+2f2a9d9e-983a-5ee6-8b87-0c8b04285212,a3e04d81-875a-575a-89fa-3635f747e854,Casero,Cocina regional
+a26cc662-9d28-5391-adfb-d67f5582d3d2,df0ce0ab-c0ab-55dc-bb53-de433b0ad95c,Contemporáneo,Cocina regional
+a26cc662-9d28-5391-adfb-d67f5582d3d2,8f76926a-6f9a-5179-96a5-c10d593cb195,Casero,Cocina regional
+a26cc662-9d28-5391-adfb-d67f5582d3d2,c4634261-11d5-5aa4-9e2d-5d11a1c4cfee,Gourmet,Cocina regional
+a26cc662-9d28-5391-adfb-d67f5582d3d2,8c06ffa2-571f-5038-81d8-acb47265310c,Gourmet,Cocina regional
+a26cc662-9d28-5391-adfb-d67f5582d3d2,df29d3b8-09c2-50a2-92ab-0475afe02113,Casero,Pescados y mariscos
+a26cc662-9d28-5391-adfb-d67f5582d3d2,24534442-c79b-5bd3-86a1-b9b23a0bc2ab,Gourmet,Cocina regional
+34b19615-a8ea-5d6d-ad3b-055e385d2725,22cda17e-167c-539d-925e-2e1402d9b674,Contemporáneo,Cocina regional
+34b19615-a8ea-5d6d-ad3b-055e385d2725,be0e0463-3608-565f-b32d-5389e5c60af9,Fusión,Carnes
+34b19615-a8ea-5d6d-ad3b-055e385d2725,a3e04d81-875a-575a-89fa-3635f747e854,Fusión,Pescados y mariscos
+78a29986-cbb5-524e-99be-e05200b4c64e,419008f4-3966-5792-909c-056a5a306c31,Tradicional,Pastas
+78a29986-cbb5-524e-99be-e05200b4c64e,1f0f1d9e-4007-5371-bf6e-befb828126c3,Casero,Carnes
+0cd523df-f641-5e07-937c-a1bd9d1249c7,405a35c5-7944-5b52-9669-e6fb9835c456,Casero,Carnes
+0cd523df-f641-5e07-937c-a1bd9d1249c7,a280f796-71f5-5fbe-8590-69abf2c44b5a,Fusión,Vegetales
+0cd523df-f641-5e07-937c-a1bd9d1249c7,d73c85d9-a988-5f55-8c37-45555ab7adb3,Gourmet,Pastas
+0cd523df-f641-5e07-937c-a1bd9d1249c7,9220d986-c5ea-5d50-b1cf-ab5bcf50676c,Gourmet,Cocina regional
+0cd523df-f641-5e07-937c-a1bd9d1249c7,5407ba2d-8cb6-529e-963f-af83729c33b9,Casero,Pastas
+0cd523df-f641-5e07-937c-a1bd9d1249c7,c4634261-11d5-5aa4-9e2d-5d11a1c4cfee,Fusión,Cocina regional
+038a7b2f-94a2-56c9-91e4-86f0bfe39fbe,8c06ffa2-571f-5038-81d8-acb47265310c,Contemporáneo,Cocina regional
+038a7b2f-94a2-56c9-91e4-86f0bfe39fbe,7d6ab656-f013-5795-8abf-ad44da728586,Casero,Pastas
+038a7b2f-94a2-56c9-91e4-86f0bfe39fbe,df29d3b8-09c2-50a2-92ab-0475afe02113,Fusión,Postres
+038a7b2f-94a2-56c9-91e4-86f0bfe39fbe,5407ba2d-8cb6-529e-963f-af83729c33b9,Tradicional,Cocina regional
+038a7b2f-94a2-56c9-91e4-86f0bfe39fbe,22cda17e-167c-539d-925e-2e1402d9b674,Contemporáneo,Postres
+038a7b2f-94a2-56c9-91e4-86f0bfe39fbe,a0841842-3d98-57e9-b7ad-2e9a68f8343a,Tradicional,Vegetales
+84a4cc32-824c-5e34-b12e-1ed2b5c6a9f0,473d58a4-5498-5318-91b0-37eb64028928,Gourmet,Postres
+84a4cc32-824c-5e34-b12e-1ed2b5c6a9f0,419008f4-3966-5792-909c-056a5a306c31,Tradicional,Pastas
+84a4cc32-824c-5e34-b12e-1ed2b5c6a9f0,c8f27292-93fa-5620-b769-060e92cd556b,Casero,Postres
+84a4cc32-824c-5e34-b12e-1ed2b5c6a9f0,116d052c-556b-5b2c-ab53-831e028b6e94,Contemporáneo,Pescados y mariscos
+d5186d96-ae17-5945-852c-bf9f45a3a6e6,1e71a1a8-1297-55e0-94f6-5bfe2d5b8a06,Tradicional,Pastas
+d5186d96-ae17-5945-852c-bf9f45a3a6e6,6e8ee3e2-bec3-5819-a2c0-8489ff93d9d5,Casero,Carnes
+238b9847-d83e-5485-bdf3-72b546abde64,a3e04d81-875a-575a-89fa-3635f747e854,Fusión,Carnes
+238b9847-d83e-5485-bdf3-72b546abde64,116d052c-556b-5b2c-ab53-831e028b6e94,Tradicional,Pescados y mariscos
+238b9847-d83e-5485-bdf3-72b546abde64,df29d3b8-09c2-50a2-92ab-0475afe02113,Contemporáneo,Pastas
+238b9847-d83e-5485-bdf3-72b546abde64,ded5df6a-4792-5c6e-a66a-1666b35ec470,Tradicional,Postres
+238b9847-d83e-5485-bdf3-72b546abde64,b9479138-219c-5230-ab15-5edec9064126,Casero,Vegetales
+238b9847-d83e-5485-bdf3-72b546abde64,d73c85d9-a988-5f55-8c37-45555ab7adb3,Fusión,Postres
+32bf328a-71cc-579f-bcb0-08ce710ce987,fae3cffd-4526-5f9b-a793-a08f9da67ed7,Tradicional,Cocina regional
+32bf328a-71cc-579f-bcb0-08ce710ce987,ab71ea4b-accd-5054-9d62-221a226d8717,Fusión,Vegetales
+32bf328a-71cc-579f-bcb0-08ce710ce987,73939612-bd12-50c0-a78d-546c007647d5,Fusión,Vegetales
+32bf328a-71cc-579f-bcb0-08ce710ce987,1f0f1d9e-4007-5371-bf6e-befb828126c3,Casero,Postres
+32bf328a-71cc-579f-bcb0-08ce710ce987,9d235a29-90cd-57ca-b2f6-12f248ebe914,Fusión,Postres
+d0f51caa-417d-51ce-a6cf-111d9d9f311b,9220d986-c5ea-5d50-b1cf-ab5bcf50676c,Gourmet,Carnes
+d0f51caa-417d-51ce-a6cf-111d9d9f311b,d5e11d14-2fd5-5535-a693-45bae50ff7ea,Gourmet,Pastas
+d0f51caa-417d-51ce-a6cf-111d9d9f311b,38a8678a-d719-5893-b20d-93ecde1cf351,Casero,Pastas
+d0f51caa-417d-51ce-a6cf-111d9d9f311b,1e71a1a8-1297-55e0-94f6-5bfe2d5b8a06,Contemporáneo,Postres
+d0f51caa-417d-51ce-a6cf-111d9d9f311b,7160655f-a02f-58d8-b051-34a544eda561,Contemporáneo,Cocina regional
+d0f51caa-417d-51ce-a6cf-111d9d9f311b,e0920216-faa9-509f-ba79-1a06ad6cb621,Gourmet,Carnes
+0e5c5bc1-0f9b-5714-9cc0-a1bca4d725b3,24534442-c79b-5bd3-86a1-b9b23a0bc2ab,Gourmet,Vegetales
+0e5c5bc1-0f9b-5714-9cc0-a1bca4d725b3,c4634261-11d5-5aa4-9e2d-5d11a1c4cfee,Casero,Carnes
+0e5c5bc1-0f9b-5714-9cc0-a1bca4d725b3,f5bcd0f8-5cc3-5588-a830-717c70bc8030,Gourmet,Carnes
+e67ae3ef-fd44-50d5-953a-5f1f4fc7d5f5,75694529-3b47-5da2-9b77-857c7b41e8e0,Casero,Pastas
+e67ae3ef-fd44-50d5-953a-5f1f4fc7d5f5,c8f27292-93fa-5620-b769-060e92cd556b,Casero,Carnes
+2616279f-b909-5319-8fcd-8ebe18931a42,9fdc8338-e39e-54ab-be51-9bad9b2bcc6f,Contemporáneo,Pescados y mariscos
+2616279f-b909-5319-8fcd-8ebe18931a42,473d58a4-5498-5318-91b0-37eb64028928,Tradicional,Carnes
+2616279f-b909-5319-8fcd-8ebe18931a42,bc94d221-565f-596a-9e27-40fcf2342723,Tradicional,Vegetales
+2616279f-b909-5319-8fcd-8ebe18931a42,a3e04d81-875a-575a-89fa-3635f747e854,Gourmet,Carnes
+3356a5f6-4d4a-5446-9d94-8ff296724ead,d8e30b36-bf87-5d88-a411-da8a1f841b29,Contemporáneo,Pescados y mariscos
+3356a5f6-4d4a-5446-9d94-8ff296724ead,a3e04d81-875a-575a-89fa-3635f747e854,Casero,Postres
+3356a5f6-4d4a-5446-9d94-8ff296724ead,484baa6c-385f-569e-bdcf-d5553d72b870,Contemporáneo,Vegetales
+2b1e32ed-ee92-57b9-8ede-0ed45d80680d,d73c85d9-a988-5f55-8c37-45555ab7adb3,Contemporáneo,Carnes
+2b1e32ed-ee92-57b9-8ede-0ed45d80680d,df0ce0ab-c0ab-55dc-bb53-de433b0ad95c,Fusión,Pastas
+2b1e32ed-ee92-57b9-8ede-0ed45d80680d,e0920216-faa9-509f-ba79-1a06ad6cb621,Contemporáneo,Pescados y mariscos
+2b1e32ed-ee92-57b9-8ede-0ed45d80680d,22cda17e-167c-539d-925e-2e1402d9b674,Casero,Cocina regional
+2b1e32ed-ee92-57b9-8ede-0ed45d80680d,9d235a29-90cd-57ca-b2f6-12f248ebe914,Tradicional,Pescados y mariscos
+2b1e32ed-ee92-57b9-8ede-0ed45d80680d,836e3778-bf27-525c-b35b-1df858de24d2,Fusión,Postres
+b3ca82ee-742e-53a4-8dee-d3defb20e84a,405a35c5-7944-5b52-9669-e6fb9835c456,Gourmet,Postres
+b3ca82ee-742e-53a4-8dee-d3defb20e84a,a280f796-71f5-5fbe-8590-69abf2c44b5a,Fusión,Vegetales
+b3ca82ee-742e-53a4-8dee-d3defb20e84a,9fdc8338-e39e-54ab-be51-9bad9b2bcc6f,Contemporáneo,Pastas
+714dcf88-335e-54f2-ae57-90e71b744e7f,24534442-c79b-5bd3-86a1-b9b23a0bc2ab,Gourmet,Carnes
+714dcf88-335e-54f2-ae57-90e71b744e7f,b9479138-219c-5230-ab15-5edec9064126,Fusión,Cocina regional
+714dcf88-335e-54f2-ae57-90e71b744e7f,7d6ab656-f013-5795-8abf-ad44da728586,Tradicional,Carnes
+714dcf88-335e-54f2-ae57-90e71b744e7f,484baa6c-385f-569e-bdcf-d5553d72b870,Tradicional,Vegetales
+714dcf88-335e-54f2-ae57-90e71b744e7f,5407ba2d-8cb6-529e-963f-af83729c33b9,Fusión,Cocina regional
+d15a8bdd-b2ac-540b-9aed-886451c2f283,143e8805-e233-51d8-83a8-f4da874bc4eb,Fusión,Postres
+d15a8bdd-b2ac-540b-9aed-886451c2f283,1f0f1d9e-4007-5371-bf6e-befb828126c3,Fusión,Carnes
+d15a8bdd-b2ac-540b-9aed-886451c2f283,7160655f-a02f-58d8-b051-34a544eda561,Tradicional,Pastas
+d15a8bdd-b2ac-540b-9aed-886451c2f283,d5e11d14-2fd5-5535-a693-45bae50ff7ea,Fusión,Pescados y mariscos
+d15a8bdd-b2ac-540b-9aed-886451c2f283,836e3778-bf27-525c-b35b-1df858de24d2,Gourmet,Vegetales
+d15a8bdd-b2ac-540b-9aed-886451c2f283,ccf366f9-5ecc-5da4-ad3e-16fc6070af4a,Fusión,Postres
+7b32d2a3-34e4-5129-bc0e-41635138f986,d73c85d9-a988-5f55-8c37-45555ab7adb3,Gourmet,Vegetales
+7b32d2a3-34e4-5129-bc0e-41635138f986,7d6ab656-f013-5795-8abf-ad44da728586,Fusión,Cocina regional
+7b32d2a3-34e4-5129-bc0e-41635138f986,ded5df6a-4792-5c6e-a66a-1666b35ec470,Tradicional,Pastas
+7b32d2a3-34e4-5129-bc0e-41635138f986,fae3cffd-4526-5f9b-a793-a08f9da67ed7,Gourmet,Cocina regional
+7b32d2a3-34e4-5129-bc0e-41635138f986,38a8678a-d719-5893-b20d-93ecde1cf351,Tradicional,Pastas
+7b32d2a3-34e4-5129-bc0e-41635138f986,c8f27292-93fa-5620-b769-060e92cd556b,Tradicional,Pastas
+1ceeb42a-be91-5075-b64d-cd49d16d35f2,d8e30b36-bf87-5d88-a411-da8a1f841b29,Gourmet,Pastas
+1ceeb42a-be91-5075-b64d-cd49d16d35f2,484baa6c-385f-569e-bdcf-d5553d72b870,Fusión,Carnes
+1ceeb42a-be91-5075-b64d-cd49d16d35f2,f5bcd0f8-5cc3-5588-a830-717c70bc8030,Casero,Carnes
+1ceeb42a-be91-5075-b64d-cd49d16d35f2,a0841842-3d98-57e9-b7ad-2e9a68f8343a,Tradicional,Carnes
+f3465498-4bac-5a53-a362-d9337ed6c266,ab71ea4b-accd-5054-9d62-221a226d8717,Gourmet,Cocina regional
+f3465498-4bac-5a53-a362-d9337ed6c266,484baa6c-385f-569e-bdcf-d5553d72b870,Fusión,Pastas
+f3465498-4bac-5a53-a362-d9337ed6c266,c4634261-11d5-5aa4-9e2d-5d11a1c4cfee,Fusión,Vegetales
+f3465498-4bac-5a53-a362-d9337ed6c266,b9479138-219c-5230-ab15-5edec9064126,Fusión,Pescados y mariscos
+f3465498-4bac-5a53-a362-d9337ed6c266,d8e30b36-bf87-5d88-a411-da8a1f841b29,Casero,Pescados y mariscos
+a38e6db9-1b56-5c55-a9c7-848d545e7b88,849c1044-c918-542b-a8e5-1c6b17e453ce,Fusión,Cocina regional
+a38e6db9-1b56-5c55-a9c7-848d545e7b88,d8e30b36-bf87-5d88-a411-da8a1f841b29,Gourmet,Carnes
+a38e6db9-1b56-5c55-a9c7-848d545e7b88,ab71ea4b-accd-5054-9d62-221a226d8717,Contemporáneo,Vegetales
+a38e6db9-1b56-5c55-a9c7-848d545e7b88,a0841842-3d98-57e9-b7ad-2e9a68f8343a,Contemporáneo,Pastas
+a38e6db9-1b56-5c55-a9c7-848d545e7b88,9d235a29-90cd-57ca-b2f6-12f248ebe914,Fusión,Pescados y mariscos
+d907902c-1068-511f-b8c7-9ad1b009e6a0,7d6ab656-f013-5795-8abf-ad44da728586,Contemporáneo,Pescados y mariscos
+d907902c-1068-511f-b8c7-9ad1b009e6a0,d73c85d9-a988-5f55-8c37-45555ab7adb3,Casero,Postres
+d907902c-1068-511f-b8c7-9ad1b009e6a0,d8e30b36-bf87-5d88-a411-da8a1f841b29,Fusión,Cocina regional
+9077b3fc-b2a5-568d-b4f8-51f62c37025c,9d235a29-90cd-57ca-b2f6-12f248ebe914,Casero,Carnes
+9077b3fc-b2a5-568d-b4f8-51f62c37025c,a3e04d81-875a-575a-89fa-3635f747e854,Fusión,Postres
+9077b3fc-b2a5-568d-b4f8-51f62c37025c,d73c85d9-a988-5f55-8c37-45555ab7adb3,Contemporáneo,Cocina regional
+9077b3fc-b2a5-568d-b4f8-51f62c37025c,8f76926a-6f9a-5179-96a5-c10d593cb195,Gourmet,Pescados y mariscos
+11b0bebc-bfbf-5d7b-b10d-6058156599c2,d5e11d14-2fd5-5535-a693-45bae50ff7ea,Fusión,Pescados y mariscos
+11b0bebc-bfbf-5d7b-b10d-6058156599c2,e3c0aad6-0e4c-535c-85cd-9660b855be3d,Contemporáneo,Carnes
+11b0bebc-bfbf-5d7b-b10d-6058156599c2,e95c884d-40d7-57c0-a10f-f3a21f55e9ae,Fusión,Carnes
+11b0bebc-bfbf-5d7b-b10d-6058156599c2,836e3778-bf27-525c-b35b-1df858de24d2,Contemporáneo,Carnes
+11b0bebc-bfbf-5d7b-b10d-6058156599c2,fae3cffd-4526-5f9b-a793-a08f9da67ed7,Contemporáneo,Pastas
+d017a653-489e-58e0-9da1-dc466d83cf15,ccf366f9-5ecc-5da4-ad3e-16fc6070af4a,Casero,Cocina regional
+d017a653-489e-58e0-9da1-dc466d83cf15,d73c85d9-a988-5f55-8c37-45555ab7adb3,Fusión,Postres
+d017a653-489e-58e0-9da1-dc466d83cf15,378d7039-5e24-5d60-8f8c-381efcd5a133,Contemporáneo,Pastas
+d017a653-489e-58e0-9da1-dc466d83cf15,22cda17e-167c-539d-925e-2e1402d9b674,Fusión,Postres
+d017a653-489e-58e0-9da1-dc466d83cf15,5e3628cf-ba60-5279-81ed-fc60a3a5d890,Gourmet,Pescados y mariscos
+7acf0b8a-600e-5ea4-bbf4-08c1930433b1,5e3628cf-ba60-5279-81ed-fc60a3a5d890,Gourmet,Vegetales
+7acf0b8a-600e-5ea4-bbf4-08c1930433b1,a280f796-71f5-5fbe-8590-69abf2c44b5a,Tradicional,Postres
+7acf0b8a-600e-5ea4-bbf4-08c1930433b1,9fdc8338-e39e-54ab-be51-9bad9b2bcc6f,Casero,Carnes
+7acf0b8a-600e-5ea4-bbf4-08c1930433b1,df0ce0ab-c0ab-55dc-bb53-de433b0ad95c,Gourmet,Vegetales
+7acf0b8a-600e-5ea4-bbf4-08c1930433b1,be0e0463-3608-565f-b32d-5389e5c60af9,Casero,Cocina regional
+f9c19dac-42fd-5fb2-815b-6d216343ebfb,5e3628cf-ba60-5279-81ed-fc60a3a5d890,Gourmet,Pastas
+f9c19dac-42fd-5fb2-815b-6d216343ebfb,1f0f1d9e-4007-5371-bf6e-befb828126c3,Gourmet,Pastas
+f9c19dac-42fd-5fb2-815b-6d216343ebfb,8f76926a-6f9a-5179-96a5-c10d593cb195,Contemporáneo,Carnes
+78f709e9-5036-5333-8935-05d22d63a62f,ded5df6a-4792-5c6e-a66a-1666b35ec470,Fusión,Vegetales
+78f709e9-5036-5333-8935-05d22d63a62f,e3c0aad6-0e4c-535c-85cd-9660b855be3d,Casero,Pastas
+78f709e9-5036-5333-8935-05d22d63a62f,5407ba2d-8cb6-529e-963f-af83729c33b9,Tradicional,Cocina regional
+0e3b0f95-acfa-54e0-97c7-39fc11a4a8bf,116d052c-556b-5b2c-ab53-831e028b6e94,Gourmet,Postres
+0e3b0f95-acfa-54e0-97c7-39fc11a4a8bf,378d7039-5e24-5d60-8f8c-381efcd5a133,Contemporáneo,Cocina regional
+0e3b0f95-acfa-54e0-97c7-39fc11a4a8bf,df29d3b8-09c2-50a2-92ab-0475afe02113,Casero,Carnes
+0e3b0f95-acfa-54e0-97c7-39fc11a4a8bf,73939612-bd12-50c0-a78d-546c007647d5,Casero,Pastas
+0e3b0f95-acfa-54e0-97c7-39fc11a4a8bf,405a35c5-7944-5b52-9669-e6fb9835c456,Casero,Pastas

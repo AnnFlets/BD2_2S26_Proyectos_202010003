@@ -125,11 +125,15 @@
 
 ### Diagramas Nodos-Relaciones
 
-**GENERAL**
+**Nodos y relaciones**
 
-![Modelo con los nodos y relaciones identificados, junto a sus propiedades](./img/modelo.png)
+![Modelo conceptual con nodos y relaciones identificadas](./img/modelos/modelo_conceptual.png)
 
-**CON DATOS**
+**Nodos, relaciones y propiedades**
 
-![Modelo con los nodos y relaciones identificados, junto a sus propiedades, con datos de ejemplo](./img/modelo_datos.png)
+![Modelo con los nodos y relaciones identificadas, junto a sus propiedades](./img/modelos/modelo_propiedades.png)
+
+**Nodos, relaciones y propiedades con datos de ejemplo**
+
+![Modelo con los nodos y relaciones identificadas, junto a sus propiedades, con datos de ejemplo](./img/modelos/modelo_datos.png)
 
