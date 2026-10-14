@@ -8,6 +8,14 @@
 
 
 
+## Introducción
+
+El presente manual técnico describe el desarrollo del proyecto Sistema de recomendación de restaurantes con Neo4j, realizado para el curso de Sistemas de Bases de Datos 2. El proyecto tiene como propósito implementar una base de datos NoSQL orientada a grafos que permita representar y analizar las relaciones entre usuarios, restaurantes, chefs, platillos y tipos de cocina. Para ello, se definieron los nodos, sus propiedades, las relaciones y las reglas de negocio necesarias para modelar la información del sistema.
+
+Asimismo, se documenta el proceso de generación y carga de datos, junto con las consultas Cypher desarrolladas para obtener recomendaciones de restaurantes, identificar chefs de alto impacto, detectar restaurantes infravalorados, comparar rangos de precios con consumos reales y analizar las preferencias gastronómicas de los usuarios. También se incluyen consultas de análisis de redes para identificar rutas de amistad y visualizar las conexiones entre restaurantes, chefs y platillos.
+
+
+
 ## Modelo NoSQL
 
 ### Nodos
@@ -522,3 +530,197 @@ Como se puede visualizar en la imagen de la ejecución de la consulta, se puede 
 
 
 
+## Análisis de redes
+
+### Calcular rutas más cortas entre usuarios (grados de separación)
+
+Las siguientes consultas permiten identificar la ruta de amistad más corta entre dos usuarios y determinar sus grados de separación. Estos representan la cantidad de relaciones de amistad que deben recorrerse para conectar a ambos usuarios: un grado corresponde a una amistad directa, dos grados implican un usuario intermediario y tres grados implican dos usuarios intermediarios. Para ejemplificar su funcionamiento, se presentan consultas con diferentes cantidades de grados de separación.
+
+**Consulta para un grado de separación:**
+
+```sql
+// Buscar los dos usuarios y encontrar la ruta de amistad más corta entre ellos
+MATCH ruta = shortestPath((a:Usuario {id: '37424608-0fd4-555d-8ba1-0b6d66366308'})-[:ES_AMIGO_DE*]-(b:Usuario {id: '21ebc54a-d6ff-539e-bb00-84a02f9c2cb8'}))
+
+// Mostrar los usuarios, la ruta encontrada y los grados de separación
+RETURN a.nombre AS usuario_origen,
+       b.nombre AS usuario_destino,
+       length(ruta) AS grados_separacion,
+       [usuario IN nodes(ruta) | usuario.nombre] AS usuarios_en_ruta,
+       ruta AS ruta_encontrada;
+```
+
+![Consulta para un grado de separación en grafo](./img/consultas/consulta_grafo_grado_1.png)
+
+![Consulta para un grado de separación en tabla](./img/consultas/consulta_tabla_grado_1.png)
+
+En las imágenes se puede ver que Lope y Albano son amigos directos, donde el grado de separación es de 1 y la ruta a seguir es de que Albano ES_AMIGO_DE Lope. Esto demuestra que ambos usuarios tienen una relación de amistad directa, por lo que existe una conexión entre ellos sin necesidad de pasar por otros usuarios.
+
+<br/>
+
+**Consulta para dos grados de separación:**
+
+```sql
+// Buscar los dos usuarios y encontrar la ruta de amistad más corta entre ellos
+MATCH ruta = shortestPath((a:Usuario {id: '37424608-0fd4-555d-8ba1-0b6d66366308'})-[:ES_AMIGO_DE*]-(b:Usuario {id: '1414f8dd-4a8e-5e30-8997-2642afb35b3d'}))
+
+// Mostrar los usuarios, la ruta encontrada y los grados de separación
+RETURN a.nombre AS usuario_origen,
+       b.nombre AS usuario_destino,
+       length(ruta) AS grados_separacion,
+       [usuario IN nodes(ruta) | usuario.nombre] AS usuarios_en_ruta,
+       ruta AS ruta_encontrada;
+```
+
+![Consulta para dos grados de separación en grafo](./img/consultas/consulta_grafo_grado_2.png)
+
+![Consulta para dos grados de separación en tabla](./img/consultas/consulta_tabla_grado_2.png)
+
+En las imágenes se puede apreciar que entre Albano y Mariano no hay una amistad directa, sino que estos tienen un amigo en común que los conecta, dando con ello un grado de separación de 2 y la ruta a seguir sería Albano ES_AMIGO_DE Buenaventura ES_AMIGO_DE Mariano. Esto nos indica que ambos usuarios están conectados mediante un usuario intermediario, quien permite establecer la conexión de amistad entre ellos a través de dos relaciones.
+
+<br/>
+
+**Consulta para tres grados de separación:**
+
+```sql
+// Buscar los dos usuarios y encontrar la ruta de amistad más corta entre ellos
+MATCH ruta = shortestPath((a:Usuario {id: '37424608-0fd4-555d-8ba1-0b6d66366308'})-[:ES_AMIGO_DE*]-(b:Usuario {id: '28f18eed-38f1-52df-8d84-641a8537ea46'}))
+
+// Mostrar los usuarios, la ruta encontrada y los grados de separación
+RETURN a.nombre AS usuario_origen,
+       b.nombre AS usuario_destino,
+       length(ruta) AS grados_separacion,
+       [usuario IN nodes(ruta) | usuario.nombre] AS usuarios_en_ruta,
+       ruta AS ruta_encontrada;
+```
+
+![Consulta para dos grados de separación en grafo](./img/consultas/consulta_grafo_grado_3.png)
+
+![Consulta para dos grados de separación en tabla](./img/consultas/consulta_tabla_grado_3.png)
+
+En las imágenes se puede apreciar que entre Albano y Primitivo no hay una amistad directa, sino que estos tienen amigos que son amigos en común, dando con ello un grado de separación de 3 y la ruta a seguir sería Albano ES_AMIGO_DE Buenaventura ES_AMIGO_DE Jermías ES_AMIGO_DE Primitivo. Esto nos define que ambos usuarios están conectados mediante dos usuarios intermediarios, por lo que es necesario recorrer tres relaciones de amistad para conectar al usuario de origen con el usuario de destino.
+
+### Identificar restaurantes altamente conectados (con más chefs y platillos destacados)
+
+Este análisis permite identificar los restaurantes que presentan una mayor cantidad de conexiones con chefs y platillos dentro de la base de datos. Para ello, se consideran los chefs asociados a cada restaurante mediante la relación `TRABAJA_EN` y los platillos disponibles que ofrece mediante la relación `OFRECE`. A partir de estas conexiones, se calcula un indicador de conectividad parcial que permite ordenar los restaurantes y seleccionar los diez con los valores más altos. Los resultados se presentan mediante una tabla y un grafo, con el propósito de facilitar tanto la comparación de los establecimientos como la visualización de sus relaciones.
+
+**Consulta para identificar los restaurantes con mayor grado de conectividad:**
+
+```sql
+// Buscar todos los nodos que representan restaurantes
+MATCH (r:Restaurante)
+
+// Buscar los chefs que trabajan en cada restaurante.
+OPTIONAL MATCH (c:Chef)-[:TRABAJA_EN]->(r)
+
+// Agrupar los resultados por restaurante y contar los chefs distintos
+WITH r, 
+    count(DISTINCT c) AS cantidad_chefs
+
+// Buscar los platillos que ofrece cada restaurante y que estén disponibles
+OPTIONAL MATCH (r)-[:OFRECE {disponible: true}]->(p:Platillo)
+
+// Agrupar por restaurante, conservando la cantidad de chefs y contar los platillos distintos que ofrece cada restaurante
+WITH r,
+    cantidad_chefs,
+    count(DISTINCT p) AS cantidad_platillos
+
+// Calcular un indicador de conectividad parcial
+WITH r,
+    cantidad_chefs,
+    cantidad_platillos,
+    cantidad_chefs + cantidad_platillos AS grado_conectividad
+
+// Devolver los datos a mostrar
+RETURN
+    r.id AS id_restaurante,
+    r.nombre AS nombre_restaurante,
+    cantidad_chefs,
+    cantidad_platillos,
+    grado_conectividad
+
+// Ordenar descendentemente por grado de conectividad, luego por cantidad de chefs
+ORDER BY grado_conectividad DESC,
+    cantidad_chefs DESC
+
+// Mostrar únicamente los primeros diez restaurantes
+LIMIT 10;
+```
+
+Esta consulta calcula la cantidad de chefs que trabajan en cada restaurante y la cantidad de platillos disponibles que ofrece. Posteriormente, suma ambas cantidades para obtener el indicador de conectividad parcial y presenta los diez restaurantes con los valores más altos, priorizando aquellos que cuentan con más chefs y, luego, con más platillos disponibles.
+
+![Consulta para identificar restaurantes altamente conectados en tabla](./img/consultas/consulta_tabla_conectividad.png)
+
+Los resultados permiten identificar y comparar los restaurantes que presentan una mayor cantidad de chefs asociados y platillos disponibles. Este análisis facilita reconocer los establecimientos con una mayor concentración de elementos relacionados con su oferta gastronómica y permite priorizar aquellos que presentan los valores más altos según el indicador de conectividad definido. Por ejemplo, el primer restaurante presente en la tabla, "Construcción KKN S.Coop. Restaurante 107", presenta un grado de conectividad de 13 (alta), indicando que tiene 13 conexiones entre platillos y chefs.
+
+**Consulta para visualizar las conexiones entre restaurantes, chefs y platillos:**
+
+```sql
+// Buscar todos los restaurantes
+MATCH (r:Restaurante)
+
+// Contar los chefs que trabajan en cada restaurante
+OPTIONAL MATCH (c:Chef)-[:TRABAJA_EN]->(r)
+WITH r, 
+    count(DISTINCT c) AS cantidad_chefs
+
+// Contar los platillos disponibles que ofrece cada restaurante
+OPTIONAL MATCH (r)-[:OFRECE {disponible: true}]->(p:Platillo)
+WITH r,
+    cantidad_chefs,
+    count(DISTINCT p) AS cantidad_platillos
+
+// Calcular el indicador de conectividad parcial
+WITH r,
+    cantidad_chefs,
+    cantidad_platillos,
+    cantidad_chefs + cantidad_platillos AS grado_conectividad
+
+// Ordenar los restaurantes y seleccionar los diez primeros
+ORDER BY grado_conectividad DESC,
+    cantidad_chefs DESC
+LIMIT 10
+
+// Recuperar las relaciones con los chefs que trabajan en cada restaurante
+OPTIONAL MATCH (c:Chef)-[trabajo:TRABAJA_EN]->(r)
+
+// Recuperar los platillos disponibles que ofrece cada restaurante
+OPTIONAL MATCH (r)-[ofrece:OFRECE {disponible: true}]->(p:Platillo)
+
+// Devolver los nodos y las relaciones para visualizar el grafo
+RETURN r, trabajo, c, ofrece, p;
+```
+
+Esta consulta permite representar gráficamente los diez restaurantes seleccionados mediante el indicador de conectividad parcial. El grafo muestra los restaurantes y sus relaciones con los chefs que trabajan en ellos y los platillos disponibles que ofrecen, facilitando la exploración visual de las conexiones existentes entre estos elementos.
+
+![Consulta para identificar restaurantes altamente conectados en tabla](./img/consultas/consulta_grafo_conectividad.png)
+
+La representación gráfica permite visualizar las conexiones entre los restaurantes seleccionados, los chefs que trabajan en ellos y los platillos que ofrecen. Esto facilita comprender cómo se estructura la red de relaciones entre estos elementos e identificar visualmente los restaurantes que cuentan con una mayor variedad de conexiones dentro de los criterios analizados.
+
+
+
+## Ventajas de Neo4j
+
+Neo4j es una base de datos NoSQL orientada a grafos que permite organizar la información mediante nodos y relaciones. Su uso en el sistema de recomendación de restaurantes ofrece las siguientes ventajas:
+
+* Organizar la información mediante nodos y relaciones, facilitando la representación de conexiones entre diferentes elementos. En el proyecto, se utilizó para relacionar usuarios, restaurantes, chefs, platillos y tipos de cocina dentro de una misma base de datos.
+
+* Consultar información conectada mediante el lenguaje Cypher, facilitando la búsqueda de datos que dependen de varias relaciones. En el proyecto, esto se aplicó para recomendar restaurantes según las calificaciones de las amistades de un usuario y analizar información de los establecimientos.
+
+* Facilitar el análisis de conexiones entre entidades, permitiendo identificar rutas y explorar cómo se relacionan los nodos. En el proyecto, se utilizó para encontrar rutas más cortas entre usuarios y analizar las conexiones entre restaurantes, chefs y platillos.
+
+* Asignar propiedades a los nodos y a las relaciones según las necesidades del sistema (es flexible), sin requerir una estructura rígida como la de las bases de datos relacionales tradicionales. En el proyecto, se almacenaron datos como las calificaciones, las fechas de visita, el consumo y las reservas.
+
+* Visualizar gráficamente los nodos y sus relaciones, lo que facilita comprender la estructura de la información almacenada. En el proyecto, esta ventaja se aprovechó para observar las relaciones de amistad y las conexiones entre restaurantes, chefs y platillos disponibles.
+
+
+
+## Conclusiones
+
+1. Se logró implementar una base de datos NoSQL en Neo4j para organizar la información de usuarios, restaurantes, chefs, platillos y tipos de cocina. Este modelo permitió representar cómo se relacionan estos elementos entre sí, siendo la base para realizar consultas y obtener información útil para el sistema de recomendación.
+
+2. La generación y carga de datos ficticios permitió comprobar el funcionamiento del modelo y realizar diferentes consultas sobre la información almacenada. Por medio de estas consultas fue posible recomendar restaurantes según las calificaciones de las amistades, identificar chefs con presencia en varios establecimientos y analizar aspectos como las reservas, los precios, los consumos y las preferencias gastronómicas de los usuarios.
+
+3. El análisis de redes permitió identificar las conexiones entre usuarios mediante sus relaciones de amistad y determinar la ruta más corta entre ellos. Esto facilita comprender cómo se relacionan los usuarios dentro de la red y cuántas conexiones los separan. Por otra parte, el análisis de las conexiones entre restaurantes, chefs y platillos permitió identificar los establecimientos con mayor cantidad de chefs asociados y platillos disponibles, facilitando la comparación de su oferta gastronómica.
+
+4. Se comprobó que Neo4j es una herramienta útil para analizar información en la que las relaciones entre los datos son importantes. El uso de consultas Cypher permitió obtener resultados a partir de diferentes criterios y explorar las conexiones de la base de datos; sin embargo, para que estos resultados sean representativos de situaciones reales, es necesario contar con datos confiables y criterios de análisis adecuados.
